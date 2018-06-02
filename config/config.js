@@ -19,6 +19,6 @@ module.exports = {
 	   //clientSecret: "q2wUOUK54SJHqnlR4oyzNGA4",
         clientID :"526241128264-k15j3pintn7nq9mg1d7k5on9gvgjosdf.apps.googleusercontent.com",
         clientSecret: "KvJxp92uaiF_xKXHebOIdJB5",
-		callbackURL: 'https://www.cosy.ga:44444/auth/google/callback'
+		callbackURL: 'https://www.cosy.ga:44444/auth/google/callback' // 수정 필요
 	}
 };
