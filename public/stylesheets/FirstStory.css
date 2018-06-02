@@ -1,0 +1,335 @@
+html {
+    background: url('http://210.89.190.28:44444/images/2.jpeg');
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+/*.layer {
+    width: 30%;
+    height: 15%;
+    margin-left: 35%;
+    margin-top: 25%;
+    margin-bottom: -14%;
+    object-fit: contain;
+
+    animation-name: logo;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    animation-delay: 1s;
+}
+
+@keyframes logo {
+
+    100% {
+        transform-origin: center;
+        transform: translateY(calc(0% - 90%)) scaleX(0.7) scaleY(0.7);
+    }
+}*/
+
+/*.TT1 {
+    margin-top: 3%;
+    width: 25%;
+    height: 40px;
+    margin-left: 37.5%;
+    opacity: 0.5;
+    border-radius: 30px;
+    background-color: #ffffff;
+
+    animation-name: main__id_pw__box;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+
+.TT2 {
+    margin-top: 1%;
+    width: 25%;
+    height: 40px;
+    margin-left: 37.5%;
+    opacity: 0.5;
+    border-radius: 30px;
+    background-color: #ffffff;
+
+    animation-name: main__id_pw__box;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}*/
+/*
+.ID_ICON {
+    border-radius: 60%;
+    position: absolute;
+    margin-top: -1.45%;
+    margin-left: -2%;
+
+    height: 22%;
+    object-fit: contain;
+    z-index: 1;
+
+    animation-name: main__id_pw__icon;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}*/
+/*.PW_ICON {
+    border-radius: 60%;
+    position: absolute;
+    margin-left: -2%;
+    height: 22%;
+    object-fit: contain;
+    z-index: 1;
+
+    animation-name: main__id_pw__icon;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}*/
+
+/*@keyframes main__id_pw__icon {
+    0%   { opacity: 0; }
+    75%   { opacity: 0.005; }
+    85%   { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+input:focus {
+  outline: none;
+}
+
+.ID {
+    width: 40%;
+
+    text-align: left;
+    font-size: 15px;
+    margin-top: 2.6%;
+    margin-left: 15%;
+
+    font-family: KoPubDotum;
+    border: none;
+
+}*/
+/*.PASSWORD {
+    width: 40%;
+    margin-top: 2.6%;
+    margin-left: 15%;
+    text-align: left;
+    font-size: 15px;
+    font-family: KoPubDotum;
+    border: none;*/
+    /* opacity: 0.5;
+    border-radius: 30px;
+    background-color: #ffffff; */
+
+    /* animation-name: main__id_pw__box;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out; */
+}
+
+/*@keyframes main__id_pw__box {
+    0%   { opacity: 0; }
+    75%   { opacity: 0.005; }
+    85%   { opacity: 0.2; }
+    100% { opacity: 0.5; }
+}
+
+.reg {
+    margin-top: 1%;
+    margin-left: 38%;
+    width: 74px;
+    height: 21px;
+    opacity: 0.5;
+    font-family: KoPubDotum;
+    font-size: 15px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    background-color: Transparent;
+    border: 0;
+    color: rgba(255, 255, 255, 0.5);
+
+    animation-name: login_reg;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}*/
+/*.login {
+    margin-left: 4%;
+    width: 56px;
+    height: 20px;
+    opacity: 0.5;
+    font-family: KoPubDotum;
+    font-size: 15px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    background-color: Transparent;
+    border: 0;
+    color: rgba(255, 255, 255, 0.5);
+
+    animation-name: login_reg;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+.glogin {
+    margin-left: 4%;
+    width: 56px;
+    height: 20px;
+    opacity: 0.5;
+    font-family: KoPubDotum;
+    font-size: 15px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    background-color: Transparent;
+    border: 0;
+    color: rgba(255, 255, 255, 0.5);
+
+    animation-name: login_reg;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}*/
+
+@keyframes login_reg {
+    0%   { opacity: 0; }
+    75%   { opacity: 0.005; }
+    85%   { opacity: 0.2; }
+    100% { opacity: 0.5; }
+}
+
+
+#chatcont {
+        position: absolute;
+        top: 15%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color : #fff;
+        line-height : 2em;
+        text-align: center;
+}
+
+#cosy{
+    position: absolute;
+    top : 40%;
+    width: 100px;
+    height:90px;
+    margin-left: 47%;
+    display: flex;
+    justify-content: center;
+
+
+}
+
+#overlay{
+  z-index: 1000;
+  position: fixed;
+  width: 100%; height: 100%;
+  left: 0; top: 0;
+  background-color: rgba(0,0,0, 0.4);
+  overflow-x: hidden;
+}
+
+.blinking{
+    -webkit-animation:blink 1.5s ease-in-out infinite alternate;
+    -moz-animation:blink 1.5s ease-in-out infinite alternate;
+    animation:blink 1.5s ease-in-out infinite alternate;
+    -webkit-animation-duration: 2.0s;
+    -webkit-animation-iteration-count:7;
+    /*animation-delay: 1.0s;*/
+}
+@-webkit-keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@-moz-keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+
+.blinking-1{
+    -webkit-animation:blink 1.5s ease-in-out infinite alternate;
+    -moz-animation:blink 1.5s ease-in-out infinite alternate;
+    animation:blink 1.5s ease-in-out infinite alternate;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-iteration-count:6;
+    animation-delay: 29.0s;
+}
+@-webkit-keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@-moz-keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+
+.blinking-2{
+    -webkit-animation:blink 1.5s ease-in-out infinite alternate;
+    -moz-animation:blink 1.5s ease-in-out infinite alternate;
+    animation:blink 1.5s ease-in-out infinite alternate;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-iteration-count:6;
+    animation-delay: 32.0s;
+}
+@-webkit-keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@-moz-keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+#icon-pro{
+    position: fixed;
+    left:93%;
+}
+
+#cosy-light{
+    position: fixed;
+    top : 17%;
+    width: 40%;
+    height:60%;
+    margin-left: 30%;
+    /*display: flex;
+    justify-content: center;*/
+
+}

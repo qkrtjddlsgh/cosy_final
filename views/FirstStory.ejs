@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko" id="td1">
+<head>
+   <!-- <link rel="stylesheet" type="text/css" href="telling.css" /> -->
+   <link rel='stylesheet' href='stylesheets/FirstStory.css' />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>첫 가이드 화면</title>
+    <link rel='stylesheet' href='stylesheets/chatbot.css'/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <style type="text/css">
+        * {
+            margin : 0;
+            padding : 0;
+            line-height : 1;
+        }
+        html, body{
+            width : 100%;
+            height : 100%;
+            background-repeat: no-repeat;
+            -webkit-background-size: cover;
+        }
+        #container {
+            position : absolute;
+        }
+    </style>
+</head>
+<body>
+    <script type="text/javascript" src="/javascripts/collie.min.js"></script>
+    <script type="text/javascript" src="/javascripts/collie.tool.min.js"></script>
+    <script type="text/javascript" src="/javascripts/box2d-web-2.1.a.3.js"></script>
+    <script type="text/javascript" src="/javascripts/collie.Box2d.js"></script>
+    <audio id="myAudio"><source src="icon_story/music.mp3" type="audio/mp3"></audio>
+    <script type="text/javascript">
+        var x = document.getElementById("myAudio");
+        x.autoplay = true;
+        x.load();
+    </script>
+</div>
+
+<script type="text/javascript">
+    collie.Renderer.RETINA_DISPLAY = "auto";
+    var folder = collie.Renderer.isRetinaDisplay() ? "large" : "small";
+
+    window.onload=function(){
+       $('#showForm').fadeIn().fadeOut(2000);
+        $('#telling1').delay(2000).fadeIn(3000).fadeOut(2000);
+        $('#telling2').delay(7000).fadeIn(3000).fadeOut(2000);
+        $('#overlay').delay(12000).fadeOut(2000);
+        $('#cosy').delay(12000).fadeIn(3000);
+        $('#cosy-light').delay(12000).fadeIn(3000);
+        $('#telling3').delay(14000).fadeIn(3000).fadeOut(2000);
+        $('#telling4').delay(19000).fadeIn(3000).fadeOut(2000);
+        $('#telling5').delay(24000).fadeIn(3000).fadeOut(2000);
+        $('#telling6').delay(29000).fadeIn(3000).fadeOut(2000);
+        $('#telling7').delay(34000).fadeIn(3000).fadeOut(2000);
+        $('#telling8').delay(39000).fadeIn(3000).fadeOut(2000);
+        $('#icon-pro').delay(39000).fadeIn(1000)
+        $('#telling9').delay(43000).fadeIn(3000).fadeOut(2000);
+        $('#icon').delay(43000).fadeIn(1000);
+        $('#telling10').delay(47000).fadeIn(3000).fadeOut(2000);
+				// swal("Click on either the button or outside the modal.")
+				// .then((value) => {
+				// 		window.location.href = "http://localhost:44444/ActivePageUI";
+				// });
+    }
+
+    var ground = new collie.DisplayObject({
+        x: 0,
+        width: 320 * 5,
+        height: 100,
+        velocityX: -200,
+        backgroundImage: "ground",
+        backgroundRepeat: "repeat-x",
+        rangeX: [-320, 0],
+        positionRepeat: true
+    }).bottom(0).addTo(layer);
+
+    collie.Renderer.addLayer(layer);
+    collie.Renderer.load(document.getElementById("container"));
+    collie.Renderer.start();
+
+    function goto(){
+        location.href="http://210.89.190.28:44444/ActivePageUI";
+    }
+</script>
+<!-- <div id="overlay" style="display: none"></div> -->
+<div id="overlay"></div>
+<div id = "showForm">
+    <div id = "chat">
+        <div id="chatcont">
+            <h2>"여기가 어디지..?"</h2>
+        </div>
+    </div>
+</div>
+
+
+<div id = "telling1" style="display: none">
+    <div id = "chat">
+        <div id="chatcont" style="line-height : 200%">
+            <h2>"소중한 기억들이 있었는데 <br/><br/>기억이 나질 않아..   "</h2>
+        </div>
+    </div>
+</div>
+
+<div id = "telling2" style="display: none">
+    <div id = "chat">
+        <div id="chatcont">
+            <h2>"이대로 잊고 싶지는 않은데.."</h2>
+        </div>
+    </div>
+</div>
+
+<img id="cosy" src="/images/코지.png" style="display: none"/>
+<span class="blinking">
+<!-- <img id="cosy-light" src="/cosy_light/코지후광.png" style="display: none"/> -->
+<img id="cosy-light" src="/cosy_light/코지후광.png"/>
+</span>
+
+<div id = "telling3" style="display: none">
+    <div id = "chat">
+        <div id="chatcont">
+            <h2>반가워요! COSY의 기억 속으로 오신 것을 환영해요!<br/><br/> COSY는 바닷속에 살고 있는 금붕어랍니다.</h2>
+        </div>
+    </div>
+</div>
+
+<div id = "telling4" style="display: none">
+    <div id = "chat">
+        <div id="chatcont">
+            <h2>어쩌다 바닷속에서 살게 되었는지는 COSY만 알고 있지만,<br/><br/>
+               지금은 아무것도 기억하지 못하는 것 같아요.</h2>
+        </div>
+    </div>
+</div>
+
+<div id = "telling5" style="display: none">
+    <div id = "chat">
+        <div id="chatcont">
+            <h2>대화를 함께 나누다 보면 COSY의 기억이 돌아올 거에요.<br/><br/>가끔은 엉뚱하기도 하지만 모두 소중한 기억들이랍니다.   </h2>
+        </div>
+    </div>
+</div>
+
+<div id = "telling6" style="display: none">
+    <div id = "chat">
+        <div id="chatcont">
+            <h2>다만 기억해낸다는 것은 COSY에게 참 힘든 일이에요.<br/><br/>COSY가 지쳐서 기억을 완전히 잃어버리지 않게 천천히 도와주세요.</h2>
+        </div>
+    </div>
+</div>
+
+<div id = "telling7" style="display: none">
+    <div id = "chat">
+        <div id="chatcont">
+            <h2>아참, COSY는 호기심이 많아 당신의 이야기를 듣는 것도 정말 좋아한답니다. <br/><br/>이야기를 들려주면 COSY가 다시 힘을 얻을 수 있을거에요.</h2>
+        </div>
+    </div>
+</div>
+
+<span class="blinking-1">
+<img id="icon-pro" src="main_icon/user-icon.png" style="display: none" onclick="goto()">
+</span>
+
+<div id = "telling8" style="display: none">
+    <div id = "chat">
+        <div id="chatcont">
+            <h2>프로필을 누르면 <br/><br/>초기화/로그아웃 버튼이 나와요</h2>
+        </div>
+    </div>
+</div>
+
+<span class="blinking-2">
+<img id="icon" src="icon_story/icon.png" style="display: none">
+</span>
+
+<div id = "telling9" style="display: none">
+    <div id = "chat">
+        <div id="chatcont">
+            <h2>COSY의 이야기가 궁금하다면 <br/><br/>언제든지 스토리를 눌러주세요!</h2>
+        </div>
+    </div>
+</div>
+
+<div id = "telling10" style="display: none">
+    <div id = "chat">
+        <div id="chatcont">
+            <h2>그럼 시작해볼까요?</h2>
+        </div>
+    </div>
+</div>
+
+<div id="login" style="display:none">
+	<div id="chat">
+
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html id="td1">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <title>로그인 화면</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // 로그인
+            // $("#btnLogin").click(function(e){
+            //     var id_email = $("#id_email").val(); // 공백처리 후 값 세팅
+            //     var password = $("#password").val(); // 공백처리 후 값 세팅
+            //
+            //     if (id_email.length == ""){
+            //         alert("ID를 입력해주세요.");
+            //         $("#id_email").focus();
+            //         return false;
+            //     }
+            //     if (password == "") {
+            //         alert("비밀번호를 입력해주세요.");
+            //         $("#password").focus();
+            //         return false;
+            //     }
+            //     // 로그인 처리
+            //     $.ajax({
+            //         url: '/CheckLogin',
+            //         type: 'POST',
+            //         dataType: 'text',
+            //         data: {id_email: id_email, password: password},
+            //         success: function(data) {
+            //             var json = JSON.parse(data);
+            //             if (json.code == 1) { // 성공시
+            //                 location.href = "/ActivePageUI";
+            //             } else { // 실패시
+            //                 alert("로그인정보가 일치하지 않습니다.\n다시 시도해주세요.");
+            //                 location.href = "/LoginPageUI";
+            //                 //$("#id_email").val('').focus();
+            //                 //$("#password").val('');
+            //             }
+            //         }
+            //     });
+            // });
+        });
+    </script>
+    <link rel='stylesheet' href='stylesheets/main.css' />
+</head>
+<body>
+<img src="images/logo.png" class="layer">
+
+<% if(message.length > 0) { %>
+  <div><%=message%></div>
+<% } %>
+
+<form action="/login" method="post">
+    <div class="TT1">
+        <!-- <img src="images/id-icon.png" class="ID_ICON"> -->
+        <input class="ID" type="text" name="username" id="id_email" placeholder="아이디"/>
+    </div>
+    <div class="TT2">
+        <!-- <img src="images/pw-icon.png" class="PW_ICON"> -->
+        <input class="PASSWORD" type="password" name="password" id="password" placeholder="비밀번호"/>
+    </div>
+    <div>
+       
+        <a href="/auth/google" class="btn btn-primary"><span class="fa google-sign-in"></span> GOOGLE</a>
+    </div>
+    <div>
+        <input type="submit" class="reg" onclick="location.href='http://210.89.190.28:44444/RegPageUI'" value="회원가입"/>
+        <input type="submit" class="login" id="btnLogin" value="로그인"/>
+    </div>
+</form>
+</body>
+</html>

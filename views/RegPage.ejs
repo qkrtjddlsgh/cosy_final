@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <title>회원가입 화면</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        body { padding-top:80px; }
+    </style>
+</head>
+<script>
+    $(document).ready(function() {
+        // 회원가입
+        $('#btnReg').click(function (e) {
+            var id_email = $('#id_email').val();
+            var password = $('#password').val();
+            var name = $('#name').val();
+            var birthday = $('#birthday').val();
+
+            if (id_email.length == "") {
+                alert("이메일을 입력해주세요.");
+                $("#id_email").focus();
+                return false;
+            }
+            if (password == "") {
+                alert("비밀번호를 입력해주세요.");
+                $("#password").focus();
+                return false;
+            }
+
+            /*if (password != passwordConfirm) {
+                alert("입력한 비밀번호와 일치하지 않습니다.");
+                $("#signupPwConfirm").focus();
+                return false;
+            }*/
+
+            if (name == "") {
+                alert('이름을 입력해주세요.');
+                $('#name').focus();
+                return false;
+            }
+
+            if (birthday == "") {
+                alert('이름을 입력해주세요.');
+                $('#birthday').focus();
+                return false;
+            }
+
+            // 회원가입 처리
+            $.ajax({
+                url: '/CheckReg',
+                type: 'POST',
+                dataType: 'text',
+                data: {id_email: id_email, password: password, name: name, birthday: birthday},
+                success: function (data) {
+                    var json = JSON.parse(data);
+                    if (json.code == 1) { // 성공시
+                        /* $("#logout").html(json.name  + " 님 환영합니다!"); // html 세팅
+                        $('#loginName').html(json.name + " 님");
+                        $('#aLogin').hide();
+                        $('#aSignup').hide();
+                        $('#aLogout').show();
+                        $('#divSignup').hide();
+                        $('#divLogout').show(); */
+                        alert('회원가입이 완료되었습니다!\n 로그인을 진행해주세요.');
+                        location.href = "/LoginPage";
+                    }
+                    else { // 실패시
+                        alert("이미 존재하는 아이디입니다.\n다시 시도해주세요.");
+                        location.href = "/RegPage";
+                        /*$('#id_email').val('');
+                        $('#password').val('');
+                        $('#name').val('');
+                        $('#birthday').val('');*/
+                    }
+                }
+            });
+
+        });
+    });
+</script>
+<body>
+<div class="container">
+    <div class="col-sm-6 col-sm-offset-3">
+        <h1><span class="fa fa-sign-in"></span> 회원가입</h1>
+            <div class="form-group">
+                <label>아이디</label>
+                <input type="text" class="form-control" name="id_email" id="id_email">
+            </div>
+            <div class="form-group">
+                <label>비밀번호</label>
+                <input type="password" class="form-control" name="password" id="password">
+            </div>
+            <div class="form-group">
+                <label>이름</label>
+                <input type="text" class="form-control" name="name" id="name">
+            </div>
+            <div class="form-group">
+                <label>생년월일</label>
+                <input type="text" class="form-control" name="birthday" id="birthday">
+            </div>
+            <button type="submit" id="btnReg" class="btn btn-warning btn-lg">회원가입</button>
+        <hr>
+        <p>이미 계정이 있으신가요? <a href="http://210.89.190.28:44444/LoginPage">로그인하기</a></p>
+        <p><a href="http://210.89.190.28:44444/MainPage">홈으로</a></p>
+    </div>
+</div>
+</body>
+</html>

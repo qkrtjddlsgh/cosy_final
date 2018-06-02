@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html id="td1">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <title>로그인 화면</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel='stylesheet' href='stylesheets/main.css' />
+</head>
+<body>
+<img src="images/logo.png" class="layer">
+
+<form action="/login" method="post">
+    <div class="TT1">
+        <!-- <img src="images/id-icon.png" class="ID_ICON"> -->
+        <input class="ID" type="text" name="id_email" id="id_email" placeholder="아이디"/>
+    </div>
+    <div class="TT2">
+        <!-- <img src="images/pw-icon.png" class="PW_ICON"> -->
+        <input class="PASSWORD" type="password" name="password" id="password" placeholder="비밀번호"/>
+    </div>
+    <div>
+    </div>
+    <div>
+        <input type="text" class="reg" onclick="location.href='http://210.89.190.28:44444/RegPageUI'" value="회원가입"/>
+        <!-- <a href="/auth/google" class="btn btn-primary"><span class="fa google-sign-in"></span>구글로그인</a> -->
+        <a href="/auth/google" class="glogin">구글 로그인</a>
+        <input type="submit" class="login" id="btnLogin" value="로그인"/>
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ko" id="td1">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>Cosy 화면</title>
+    <link rel='stylesheet' href='stylesheets/chatbot.css'/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <script src='https://www.riccardotartaglia.it/freudjs/js/freud.min.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style type="text/css">
+        * {
+            margin : 0;
+            padding : 0;
+            line-height : 1;
+        }
+        html, body{
+            width : 100%;
+            height : 100%;
+            background: url("http://210.89.190.28:44444/backg/level0.png");
+            background-repeat: no-repeat;
+            -webkit-background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <script type="text/javascript">
+        function answer(){
+            var ans = ["앗 무슨일이 있었어요?", "ㅠㅠ 저는 이해할 수 없는 아주 힘든일이 있었나봐요", "가끔 그런 날이 있죠. 오늘은 아무생각 말고 푹 쉬어요", "기분이 상한거 같아요 그쵸?", "토닥토닥ㅠㅠ 괜찮아 질거에요", "제가 할 수 있는 말은 이게 전부네요. 힘내요! 내일은 좀 더 괜찮아 질거에요", "지금은 힘들어도 조금만 버티면 이 시간은 지나갈거에요", "힘들었지요? 토닥토닥", "축하해요 헤헤", "오늘은 기분 좋아보여서 다행이에요", "기분이 좋아보여서 저까지 기분이 좋아져요", "한번 자신에게 칭찬 한마디 해주는 건 어때요?ㅎㅎ", "우와 대단해요!", "오늘 왠지 느낌이 좋은데요?", "뭔가 기분이 좋은 것 같네요. 사실 저도 오늘 기분이 좋아요", "그렇게 좋은 일이 있었어요? 잊어버리지 않게 조심해야겠어요", "좋은 이야기를 들려주어서 정말 고마워요", "행복한 이야기를 들려줘서 고마워요 저도 같이 행복해지는 것 같아요", "고마워요 이유는... 까먹었어요...", "저도 처음 커다란 물고기를 보았을 때 그렇게 신이 났던 것 같아요", "저도 얼마 전에 행복한 일이 있었어요 다음엔 까먹지 않을게요...", "그렇게 행복해하다니 오늘은 절대 까먹지 않을게요", "금붕어라서 가장 슬플 때가 언젠지 알아요? 아... 까먹었다...", "금붕어라서 좋은 점도 있어요. 그런데 방금 뭐라고 하셨는지 까먹었어요", "가끔 어떻게 대답을 할지 고민하다가 뭘 말하려고 할지 까먹었는데.. ?!... 왜 그렇게 보세요?", "기억하지 않는 것이 좋을 때도 있지만 기억하지 못하는 건 슬픈 일이에요", "저도 비슷한 일이 있었어요. 음... 아..! 기억날뻔했는데...", "방금 말해준 그 단어 저도 알고 있었던 건데...", "저는 한 번에 두 가지는 잘 못하는 것 같아요... 다른 생각하다가 까먹어버렸어요...", "아 잠깐 다른 생각했어요 미안해요. 아주 이쁜 꽃을 본 것 같은데..", "그래도 주변을 잘 둘러보면 작은 행복이 있을 거라고 믿어요", "그럴 때마다 제가 항상 당신의 이야기를 들어줄 수 있음을 기억해주세요", "아무리 안 좋은 일도 한참 후에 다시 생각해보면 아주 새롭게 느껴질 거예요", "두 번 다시는 그런 일이 없었으면 좋겠어요 저에게는 항상 처음 같지만...", "힘든 일이 있을 때마다 생각하는 것이 있는데 기억이 나지 않네요...", "이럴 때마다 금붕어라서 다행이라고 생각해요", "너무 힘들어하지 말아요. 충분히 잘하고 있으니까요.", "차라리 나처럼 빨리 잊는 게 좋을 때도 있겠네요.."];
+
+            var result = Math.floor(Math.random() * 36);
+
+            /*$.ajax({
+                url: 'http://localhost:44444/sentiment',
+                dataType: 'text',
+                type: 'POST',
+                async: true,
+                data: {'msg': 1},
+                success : function(data) {
+                    result = data;
+                }
+            });*/
+
+            return ans[result];
+        }
+
+            window.onload = function() {
+
+                $('#chatSelect').hide();
+                $('#aboutMe').show();
+
+                  var nodes = {
+                      "start": {
+                          wait: 200,
+                          sentence: [
+                              {
+                                  mex: '반가워요!! 전 코지라고 해요 ㅎㅎ 언제나 편하게 고민을 말씀해주세요!!',
+                                  wait: 500
+                              }
+                          ],
+                          r: {
+                              wait: 1800,
+
+                              type: "input",
+                              el: [
+                                  {
+                                      label: "(Enter)",
+                                      fn: function (value) {
+                                          if(value === '' || value === undefined){
+                                              $freud.do('error');
+                                          } else {
+                                              $freud.setVar('ask', value);
+                                              $freud.do('q2');
+                                          }
+                                      }
+                                  },
+                              ]
+                          }
+                      },
+                      "q2": {
+                          wait: 600,
+                          sentence: [
+                              {
+                                  mex: answer(),
+                                  wait: 200
+                              }
+                          ],
+                          r: {
+                              wait: 1800,
+
+                              type: "input",
+                              el: [
+                                  {
+                                      label: "(Enter)",
+                                      fn: function (value) {
+                                          if(value === '' || value === undefined){
+                                              $freud.do('error');
+                                          } else {
+                                              $freud.setVar('ask', value);
+                                              $freud.do('q3');
+                                          }
+                                      }
+                                  },
+                              ]
+                          }
+                      },
+                      "q3": {
+                          wait: 800,
+                          sentence: [
+                              {
+                                  mex: answer(),
+                                  wait: 200
+                              }
+                          ],
+                          r: {
+                              wait: 1800,
+
+                              type: "input",
+                              el: [
+                                  {
+                                      label: "(Enter)",
+                                      fn: function (value) {
+                                          if(value === '' || value === undefined){
+                                              $freud.do('error');
+                                          } else {
+                                              $freud.setVar('ask', value);
+                                              $freud.do('q4');
+                                          }
+                                      }
+                                  },
+                              ]
+                          }
+                      },
+                      "q4": {
+                          wait: 500,
+                          sentence: [
+                              {
+                                  mex: answer(),
+                                  wait: 0
+                              }
+                          ],
+                          r: {
+                              wait: 1800,
+
+                              type: "input",
+                              el: [
+                                  {
+                                      label: "(Enter)",
+                                      fn: function (value) {
+                                          if(value === '' || value === undefined){
+                                              $freud.do('error');
+                                          } else {
+                                              $freud.setVar('ask', value);
+                                              $freud.do('q5');
+                                          }
+                                      }
+                                  },
+                              ]
+                          }
+                      },
+                      "q5": {
+                          wait: 800,
+                          type: "text",
+                          sentence: [
+                              {
+                                  mex: answer(),
+                                  wait: 0
+                              }
+                          ],
+                          r: {
+                              wait: 1800,
+
+                              type: "input",
+                              el: [
+                                  {
+                                      label: "(Enter)",
+                                      fn: function (value) {
+                                          if(value === '' || value === undefined){
+                                              $freud.do('error');
+                                          } else {
+                                              $freud.setVar('ask', value);
+                                              $freud.do('q6');
+                                          }
+                                      }
+                                  },
+                              ]
+                          }
+                      },
+                      "q6": {
+                          wait: 800,
+                          type: "text",
+                          sentence: [
+                              {
+                                  mex: answer(),
+                                  wait: 0
+                              }
+                          ],
+                          r: {
+                              wait: 1800,
+
+                              type: "input",
+                              el: [
+                                  {
+                                      label: "(Enter)",
+                                      fn: function (value) {
+                                          if(value === '' || value === undefined){
+                                              $freud.do('error');
+                                          } else {
+                                              $freud.setVar('ask', value);
+                                              $freud.do('q7');
+                                          }
+                                      }
+                                  },
+                              ]
+                          }
+                      },
+                      "q7": {
+                          wait: 800,
+                          type: "text",
+                          sentence: [
+                              {
+                                  mex: answer(),
+                                  wait: 0
+                              }
+                          ],
+                          r: {
+                              wait: 1800,
+
+                              type: "input",
+                              el: [
+                                  {
+                                      label: "(Enter)",
+                                      fn: function (value) {
+                                          if(value === '' || value === undefined){
+                                              $freud.do('error');
+                                          } else {
+                                              $freud.setVar('ask', value);
+                                              $freud.do('q8');
+                                          }
+                                      }
+                                  },
+                              ]
+                          }
+                      },
+                      "q8": {
+                          wait: 800,
+                          type: "text",
+                          sentence: [
+                              {
+                                  mex: answer(),
+                                  wait: 0
+                              }
+                          ],
+                          r: {
+                              wait: 1800,
+
+                              type: "input",
+                              el: [
+                                  {
+                                      label: "(Enter)",
+                                      fn: function (value) {
+                                          if(value === '' || value === undefined){
+                                              $freud.do('error');
+                                          } else {
+                                              $freud.setVar('ask', value);
+                                              $freud.do('q9');
+                                          }
+                                      }
+                                  },
+                              ]
+                          }
+                      },
+                      "q9": {
+                          wait: 800,
+                          type: "text",
+                          sentence: [
+                              {
+                                  mex: answer(),
+                                  wait: 0
+                              }
+                          ],
+                          r: {
+                              wait: 1800,
+
+                              type: "input",
+                              el: [
+                                  {
+                                      label: "(Enter)",
+                                      fn: function (value) {
+                                          if(value === '' || value === undefined){
+                                              $freud.do('error');
+                                          } else {
+                                              $freud.setVar('ask', value);
+                                              $freud.do('q10');
+                                          }
+                                      }
+                                  },
+                              ]
+                          }
+                      },
+                      "q10": {
+                          wait: 800,
+                          type: "text",
+                          sentence: [
+                              {
+                                  mex: answer(),
+                                  wait: 0
+                              }
+                          ],
+                          r: {
+                              wait: 800,
+                              type: "button",
+                              el: [
+                                  {type: "nav", value: "start", label: "계속 대화하기"}
+                              ]
+                          }
+                      }
+                  };
+
+                  $freud.init('#freud', nodes);
+            }
+    </script>
+</div>
+    <a href="http://210.89.190.28:44444/ActivePageUI">채팅종료</a>
+
+    <!-- **** 대화 유형 선택 부분 **** -->
+    <div style="display:none;" id="chatSelect" class="chat">
+        <div class="chat_Column">
+          <div class="chat__buttons">
+            <button id="chat1" class="select__chat1">COSY</button>
+            <button id="chat2" class="select__chat2">ME</button>
+          </div>
+        </div>
+    </div>
+
+    <!-- **** 2) 감정분석 대화 구현한 부분 **** -->
+    <!-- 주석처리 한 부분에 대화 부분 넣으시면 됩니다 ( 형식 맞춰서 id, class는 적용해 주셔야 합니당 )-->
+    <div style="display:none;" id="aboutMe" class="chat">
+        <div class="chat_Column">
+            <div style="text-align:center; margin:10px auto;"></div>
+                <!-- <img style="max-width: 100%;" src="https://www.riccardotartaglia.it/freudjs/img/header.png"> -->
+            <div id="freud" style="overflow:auto;">
+                <div id="bot-icon" class="freud-icon __bot">
+                    <img src="http://210.89.190.28:44444/images/코지.png">
+                </div>
+                <div id="user-icon" class="freud-icon __user">
+                    <img src="https://www.riccardotartaglia.it/freudjs/img/user.png">
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

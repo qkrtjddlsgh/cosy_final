@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ko" id="td1">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>Cosy 화면</title>
+    <link rel='stylesheet' href='stylesheets/chatbot.css'/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <script src='https://www.riccardotartaglia.it/freudjs/js/freud.min.js'></script>
+    <style type="text/css">
+        * {
+            margin : 0;
+            padding : 0;
+            line-height : 1;
+        }
+        html, body{
+            width : 100%;
+            height : 100%;
+            background: url("http://210.89.190.28:44444/backg/level0.png");
+            background-repeat: no-repeat;
+            -webkit-background-size: cover;
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript">
+    window.onload = function() {
+        $('#chat').show();
+
+        var nodes = {
+            "start": {
+                wait: 200,
+                sentence: [
+                    {
+                        mex: '어디서 봤던 분 같은데...\n' +
+                        '우리 만난 적이 있던가요 ?',
+                        wait: 500
+                    }
+                ],
+                r: {
+                    wait: 1800,
+                    type: "button",
+                    el: [
+                        {type: "nav", value: "q2", label: "맞아요. 우리 같이 이야기했잖아요."},
+                        {type: "nav", value: "q2", label: "글쎄요... 우리가 만났던 가요?"},
+                        {type: "nav", value: "q2", label: "어떻게 까먹을 수가 있어요?"}
+                        //{type: "action", value: function(){$freud.do('about')}, label:"Who are you?"},
+                        //{type: "link", value: "http://www.google.it", label:"Show me Google"}
+                    ]
+                }
+            },
+            "q2": {
+                wait: 600,
+                sentence: [
+                    {
+                        mex: '아! 미안해요 우리 같이 모래성에 대한 기억을 찾았었죠\n' +
+                        '오늘도 같이 이야기해 주실 건가요?',
+                        wait: 200
+                    }
+                ],
+                r: {
+                    wait: 1900,
+                    type: "button",
+                    el: [
+                        {type: "nav", value: "q3", label: "그래요 어떤 이야기를 해줄 거예요?"},
+                        {type: "nav", value: "q3", label: "혹시 기억난 것이 있나요?"},
+                        {type: "nav", value: "q3", label: "네 물어보고 싶은 것이 있는데..."}
+                    ]
+                }
+            },
+            "q3": {
+                wait: 800,
+                sentence: [
+                    {
+                        mex: '아니에요 오늘은 제가 물어보고 싶은 것이 있어요.\n' +
+                        '지금이 아니면 까먹을 것 같아요.\n' +
+                        '바다 위에는 뭐가 있나요?',
+                        wait: 200
+                    }
+                ],
+                r: {
+                    wait: 1900,
+                    type: "button",
+                    el: [
+                        {type: "nav", value: "q4", label: "가까이 가본적 있나요?"},
+                        {type: "nav", value: "q4", label: "바다 위를 한 번도 본적 없나요?"},
+                        {type: "nav", value: "q4", label: "같이 한 번 올라가 봐요."}
+                    ]
+                }
+            },
+            "q4": {
+                wait: 500,
+                sentence: [
+                    {
+                        mex: '글쎄요.. 아직은 무서워서 못 갈 것 같아요.\n' +
+                        '그래도 이 커다란 그림자는 누구 것인지 궁금해요.️',
+                        wait: 0
+                    }
+                ],
+                r: {
+                    wait: 1900,
+                    type: "button",
+                    el: [
+                        {type: "nav", value: "q5", label: "아주 큰 새 아닐까요?"},
+                        {type: "nav", value: "q5", label: "우리 위로 배가 지나가는 것 같아요."},
+                        {type: "nav", value: "q5", label: "하늘 위로 비행기가 지나가나 봐요."}
+                    ]
+                }
+                /*r: {
+                    wait: 2000,
+                    type: "input",
+                    el: [
+                        {
+                            label: "Your Name...",
+                            fn: function (value) {
+                                if(value === '' || value === undefined){
+                                    $freud.do('error');
+                                } else {
+                                    $freud.setVar('name', value);
+                                    $freud.do('q5');
+                                }
+                            }
+                        },
+                    ]
+                }*/
+            },
+            /*"error": {
+                wait: 500,
+                sentence: [
+                    {
+                        mex:
+                            'You have no name? Don\'t be shy!',
+                        wait: 0
+                    }
+                ],
+                r: {
+                    wait: 700,
+                    type: "input",
+                    el: [
+                        {
+                            label: "Tell me your name...",
+                            fn: function (value) {
+                                if(value === '' || value === undefined){
+                                    $freud.do('error');
+                                } else {
+                                    $freud.setVar('name', value);
+                                    $freud.do('q5');
+                                }
+                            }
+                        },
+                    ]
+                }
+            },*/
+            "q5": {
+                wait: 800,
+                type: "text",
+                sentence: [
+                    {
+                        mex: '아 그런가요 그건 뭐 하는 거예요?\n' +
+                        '왜 우리 위로 지나다니는 거예요?',
+                        wait: 200
+                    }
+                ],
+                r: {
+                    wait: 800,
+                    type: "button",
+                    el: [
+                        {type: "nav", value: "q6", label: "사람들이 타고 가는 중일 거예요."},
+                        {type: "nav", value: "q6", label: "그냥 왔다 갔다 반복하고 있을 거예요."}
+                    ]
+                }
+            },
+            "q6": {
+                wait: 800,
+                type: "text",
+                sentence: [
+                    {
+                        mex: '비슷한 기억이 날 것만 같아요...\n' +
+                        '좀 더 말해 줄 수 있나요?',
+                        wait: 200
+                    }
+                ],
+                r: {
+                    wait: 800,
+                    type: "button",
+                    el: [
+                        {type: "nav", value: "q7", label: "항상 물 위에 있을 거예요."},
+                        {type: "nav", value: "q7", label: "무거워도 아주 빠르게 움직이는 거예요."},
+                        {type: "nav", value: "q7", label: "사람들이 정말 많이 타고 있을 거예요."}
+                    ]
+                }
+            },
+            "q7": {
+                wait: 800,
+                type: "text",
+                sentence: [
+                    {
+                        mex: '아 저 봤던 것 같아요. 사람들을 가득 태우고\n' +
+                        '하늘에서 날아다니면서 왔다 갔다 하던 신비한 것을요.'
+                    }
+                ],
+                r: {
+                    wait: 800,
+                    type: "button",
+                    el: [
+                        {type: "link", value: "http://210.89.190.28:44444/devcamp", label:"떠나보아요~!"},
+                    ]
+                }
+            }
+        };
+        $freud.init('#freud', nodes);
+    };
+</script>
+</div>
+<a href="http://210.89.190.28:44444/ActivePageUI">채팅종료</a>
+<div style="display:none;" id="chat" class="chat">
+    <div class="chat_Column">
+        <div style="text-align: center; margin:10px auto;">
+            <!-- <img style="max-width: 100%;" src="https://www.riccardotartaglia.it/freudjs/img/header.png"> -->
+        </div>
+        <div id="freud" style="overflow:auto;">
+            <div id="bot-icon" class="freud-icon __bot">
+                <img src="http://210.89.190.28:44444/images/코지.png">
+            </div>
+            <div id="user-icon" class="freud-icon __user">
+                <img src="https://www.riccardotartaglia.it/freudjs/img/user.png">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko" id="td1">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>Cosy 화면</title>
+    <link rel='stylesheet' href='stylesheets/chatbot.css'/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <script src='https://www.riccardotartaglia.it/freudjs/js/freud.min.js'></script>
+    <style type="text/css">
+        * {
+            margin : 0;
+            padding : 0;
+            line-height : 1;
+        }
+        html, body{
+            width : 100%;
+            height : 100%;
+            background: url("http://210.89.190.28:44444/backg/level0.png");
+            background-repeat: no-repeat;
+            -webkit-background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <script type="text/javascript">
+
+            window.onload = function() {
+
+                // 1. 페이지 로드되면  COSY/ME 선택 화면
+                $('#chatSelect').show();
+
+                // 2. COSY 선택 시
+                $("#chat1").click(function(e){
+
+                    $('#chatSelect').hide();
+                    $('#aboutCosy').show();
+
+                    var nodes = {
+                        "start": {
+                            wait: 200,
+                            sentence: [
+                                {
+                                    mex: '반가워요 처음 보는 것 같은데 저를 아시나요?',
+                                    wait: 500
+                                },
+                                {
+                                    mex: "지금은 아무것도 기억나지 않아요.\n" +
+                                    "이야기하다 보면 기억이 나겠죠?",
+                                    wait: 500
+                                }
+                            ],
+                            r: {
+                                wait: 1800,
+                                type: "button",
+                                el: [
+                                    {type: "nav", value: "q2", label: "맞아요. 기억할 수 있겠죠?"},
+                                    {type: "nav", value: "q2", label: "그럴지도 모르죠 그런데 왜 기억을 잃었나요?"},
+                                    {type: "nav", value: "q2", label: "기억을 모두 잃다니 정말 바보같아요."}
+                                ]
+                            }
+                        },
+                        "q2": {
+                            wait: 600,
+                            sentence: [
+                                {
+                                    mex: '글쎄요.. 제가 금붕어이긴 한데.. 그래도 기억해낼 수 있다면 잊었다는 것은 중요하지 않아요',
+                                    wait: 200
+                                }
+                            ],
+                            r: {
+                                wait: 1900,
+                                type: "button",
+                                el: [
+                                    {type: "nav", value: "q3", label: "혹시 바다로 오기전에 살던 곳은 기억할 수 있어요?"},
+                                    {type: "nav", value: "q3", label: "그래도 조금이나마 기억나는 것은 없나요?"},
+                                    {type: "nav", value: "q3", label: "정말 모든 기억이 하나도 없는 건가요?"}
+                                ]
+                            }
+                        },
+                        "q3": {
+                            wait: 800,
+                            sentence: [
+                                {
+                                    mex: '음... 지금 기억나는 것은...\n' +
+                                    '가끔은 평평하기도 하고 가끔은 우뚝 솟아 있기도 했던 곳에 살았던 것 같아요.',
+                                    wait: 200
+                                }
+                            ],
+                            r: {
+                                wait: 1900,
+                                type: "button",
+                                el: [
+                                    {type: "nav", value: "q4", label: "혹시 나무가 많은 산에 살았던 건가요?"},
+                                    {type: "nav", value: "q4", label: "혹시 산호초가 많은 저쪽 언덕에 있었던 것 아니에요?"},
+                                    {type: "nav", value: "q4", label: "혹시 넓고 평평한 들판에 있었나요?"}
+                                ]
+                            }
+                        },
+                        "q4": {
+                            wait: 500,
+                            sentence: [
+                                {
+                                    mex: '음.. 그게 뭐죠?\n' +
+                                    '어떤 곳인지는 잘모르겠지만 거긴 아니었던 것 같아요.️',
+                                    wait: 0
+                                }
+                            ],
+                            r: {
+                                wait: 1900,
+                                type: "button",
+                                el: [
+                                    {type: "nav", value: "q5", label: "그런가요.. 혹시 그럼 어디일까요?"},
+                                    {type: "nav", value: "q5", label: "맞아요 금붕어가 살기엔 힘들 수도 있죠..."},
+                                    {type: "nav", value: "q5", label: "또 다른 것은 기억나지 않나요?"}
+                                ]
+                            }
+                        },
+                        "q5": {
+                            wait: 800,
+                            type: "text",
+                            sentence: [
+                                {
+                                    mex: '글쎄요.. 그것보다 당신의 이야기도 듣고싶어요\n' +
+                                    '그러다 보면 기억나지 않을까요?\n' +
+                                    '나중에 어떤 곳에서 살고 싶으세요?'
+                                }
+                            ],
+                            r: {
+                                wait: 800,
+                                type: "button",
+                                el: [
+                                    {type: "nav", value: "q6", label: "저는 큰 창문으로 해변이 보이는 집에서 살고싶어요."},
+                                    {type: "nav", value: "q6", label: "저는 마치 궁전이나 성처럼 크고 웅장한 곳에서 살거에요."},
+                                    {type: "nav", value: "q6", label: "숲 속에서 살고 싶어요 흙과 모래 냄새가 나는 곳이요."}
+                                ]
+                            }
+                        },
+                        "q6": {
+                            wait: 800,
+                            type: "text",
+                            sentence: [
+                                {
+                                    mex: '음! 잠깐만...\n' +
+                                    '맞아요 저 해변에 있었어요 모래가 평평하게 가득하고\n' +
+                                    '가끔씩 누군가 멋지게 만들어놓은 모래성이 있었어요.'
+                                }
+                            ],
+                            r: {
+                                wait: 800,
+                                type: "button",
+                                el: [
+                                    {type: "link", value: "http://210.89.190.28:44444/devcamp", label:"떠나보아요~!"},
+                                ]
+                            }
+                        }
+                    };
+
+                    $freud.init('#freud', nodes);
+              });
+
+              // 3. ME 선택 시
+              $("#chat2").click(function(e){
+                //$('#chatSelect').hide();
+                //$('#aboutMe').show();
+                  location.href = "http://210.89.190.28:44444/ChatPage2";
+              });
+            }
+    </script>
+</div>
+    <a href="http://210.89.190.28:44444/ActivePageUI">채팅종료</a>
+
+    <!-- **** 대화 유형 선택 부분 **** -->
+    <div style="display:none;" id="chatSelect" class="chat">
+        <div class="chat_Column">
+          <div class="chat__buttons">
+            <button id="chat1" class="select__chat1">COSY</button>
+            <button id="chat2" class="select__chat2">ME</button>
+          </div>
+        </div>
+    </div>
+
+    <!-- **** 1) 코지 스무고개 대화 부분 **** -->
+    <div style="display:none;" id="aboutCosy" class="chat">
+        <div class="chat_Column">
+            <div style="text-align:center; margin:10px auto;">
+                <!-- <img style="max-width: 100%;" src="https://www.riccardotartaglia.it/freudjs/img/header.png"> -->
+            </div>
+            <div id="freud" style="overflow:auto;">
+                <div id="bot-icon" class="freud-icon __bot">
+                    <img src="http://210.89.190.28:44444/images/코지.png">
+                </div>
+                <div id="user-icon" class="freud-icon __user">
+                    <img src="https://www.riccardotartaglia.it/freudjs/img/user.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- **** 2) 감정분석 대화 구현한 부분 **** -->
+    <!-- 주석처리 한 부분에 대화 부분 넣으시면 됩니다 ( 형식 맞춰서 id, class는 적용해 주셔야 합니당 )-->
+    <div style="display:none;" id="aboutMe" class="chat">
+        <div class="chat_Column">
+            <div style="text-align:center; margin:10px auto;"></div>
+                <!-- <img style="max-width: 100%;" src="https://www.riccardotartaglia.it/freudjs/img/header.png"> -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

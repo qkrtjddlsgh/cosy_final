@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko" id="td1">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>Cosy 화면</title>
+    <link rel='stylesheet' href='stylesheets/chatbot.css'/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <script>
+        var level = 0;
+
+        window.onload = function(){
+            document.getElementById('td1').style.backgroundImage = "url('http://210.89.190.28:44444/backg/dojeon.gif')";
+        }
+
+        function chback(){
+            var url_list = "url('http://210.89.190.28:44444/backg/" + "level" + level + ".png";
+            document.getElementById('td1').style.backgroundImage = url_list;
+            level++;
+
+            if(level == 15){
+                level = 0;
+            }
+        }
+        function Tochat(){
+            location.href = "http://210.89.190.28:44444/ChatPage";
+        }
+    </script>
+    <style type="text/css">
+        * {
+            margin : 0;
+            padding : 0;
+            line-height : 1;
+        }
+        html, body{
+            width : 100%;
+            height : 100%;
+            /*background: url("http://localhost:44444/backg/level0.png");*/
+            background-repeat: no-repeat;
+            -webkit-background-size: cover;
+        }
+        #container {
+            position : absolute;
+        }
+    </style>
+</head>
+<body>
+<input type="text" onclick="chback();" value="change background"/>
+<input type="text" onclick="Tochat();" value="채팅하러갈레?"/>
+<div id="container" class="container"></div>
+
+    <script type="text/javascript" src="/javascripts/collie.min.js"></script>
+    <script type="text/javascript" src="/javascripts/collie.tool.min.js"></script>
+    <script type="text/javascript" src="/javascripts/box2d-web-2.1.a.3.js"></script>
+    <script type="text/javascript" src="/javascripts/collie.Box2d.js"></script>
+    <script type="text/javascript">
+
+        collie.util.addEventListener(window, "load", function(){
+            /*var oConsole = new collie.FPSConsole({
+                isSimple : true,
+                color : "#fff"
+            });*/
+
+            var htParams = collie.util.queryString();
+            var htSize = {
+                width : document.body.clientWidth,
+                height : document.body.clientHeight
+            };
+
+            collie.Renderer.DEBUG_RENDERING_MODE = typeof htParams.dom != "undefined" ? "dom" : (typeof htParams.canvas != "undefined" ? "canvas" : "auto");
+            collie.Renderer.RETINA_DISPLAY = false;
+
+            collie.ImageManager.add("cosy", "/images/cosy_small.png");
+            collie.ImageManager.addSprite("cosy", {
+                //faceright : [0, 0, 129.4, 165, 8], // x, y, width, height, spriteLength
+                //faceleft : [0, 165, 129.4, 165, 8]
+                faceleft: [0, 0, 100, 85, 1],
+                faceright: [0, 80, 100, 85, 1]
+            });
+
+            var layer = new collie.Layer({
+                width : htSize.width,
+                height : htSize.height
+            });
+
+            var box2d = new collie.Box2d(htSize.width, htSize.height, 30);
+
+            box2d.addFixture("cosy", {
+                density : 1.0,
+                friction : 0.5,
+                restitution : 0
+            });
+            box2d.addFixture("none", {
+                density : 1.0,
+                friction : 0,
+                restitution : 0
+            });
+
+            /*box2d.addFixture("bullet", {
+                density : 0,
+                friction : 0,
+                restitution : 0,
+                bullet: true
+            });
+            box2d.addFixture("ground", {
+                density : 1.0,
+                friction : 0.5,
+                restitution : 0.2
+            });*/
+
+            box2d.createWall("right");
+            box2d.createWall("left");
+            box2d.createWall("top");
+            box2d.createWall("bottom");
+
+            /*var box = new collie.DisplayObject({
+                x: "center",
+                y: "bottom",
+                width: 100,
+                height: 100,
+                backgroundColor: "green"
+            }).addTo(layer);*/
+
+            var cosy = new collie.DisplayObject({
+                width : 100,
+                height : 85,
+                x : "center",
+                y : "center",
+                useEvent : true,
+                backgroundImage : "cosy",
+                spriteSheet : "faceright"
+            }).addTo(layer);
+
+            var rTimer = collie.Timer.cycle(cosy, "450fps", {
+                to: 1
+            });
+
+            rTimer.stop();
+
+            var body = box2d.createObject(cosy, {
+                width : 100,
+                height : 85
+            }, "cosy");
+
+            /*var box1 = box2d.createObject(box, {
+                width : 100,
+                height : 100,
+                type : "static"
+            }, "rabbit");*/
+
+            var player = body;
+            player.SetFixedRotation(true);
+
+            var htKeyPressed = {
+                left : false,
+                right : false
+            };
+
+            /*collie.util.addEventListener(document.body, "click", function (e) {
+                location.href = "http://localhost:44444/ChatPage";
+            });*/
+
+            /*collie.util.addEventListener(document.body, "click", function (e) {
+                //var nw = collie.util.cloneObject(rabbit);
+                //nw.addLayer(layer);
+                //collie.addChild(rabbit);
+
+                var temp = rabbit.clone().addTo(layer);
+
+                var tTimer = collie.Timer.cycle(temp, "30fps", {
+                    to: 8
+                });
+
+                tTimer.start();
+            });*/
+
+            collie.util.addEventListener(document.body, "keydown", function (e) {
+                player.SetAwake(true);
+
+                switch (e.keyCode) {
+                    case 39 : //right
+                        htKeyPressed.right = true;
+                        cosy.set("spriteSheet", "faceright");
+                        rTimer.start();
+                        break;
+                    case 37 : //left
+                        htKeyPressed.left = true;
+                        cosy.set("spriteSheet", "faceleft");
+                        rTimer.start();
+                        break;
+                    case 38 : //top
+                        var velocity = player.GetLinearVelocity();
+                        player.SetLinearVelocity(collie.Box2d.vec2(velocity.x, -15), player.GetWorldCenter());
+                        break;
+                    case 40 : //bottom
+                        var velocity = player.GetLinearVelocity();
+                        player.SetLinearVelocity(collie.Box2d.vec2(velocity.x, +1), player.GetWorldCenter());
+                        break;
+                    /*case 40:
+                           direc = cosy.get("spriteSheet");
+                           var d = -1;
+                           if(direc == 'faceright') d = 1;
+                           var rx = rabbit.get ( "x" );
+                           var ry = rabbit.get ( "y" );
+                           var rw = rabbit.get("width");
+                           var rh = rabbit.get("height");
+
+                           var fire = new collie.DisplayObject({
+                               x: rx+d*(rw/2),
+                               y: ry+(rh/2),
+                               width: 10,
+                               height: 4,
+                               mass: 1,
+                               backgroundColor: "red"
+                           }).addTo(layer);
+
+                           var fire1 = box2d.createObject(fire, {
+                               width : 10,
+                               height : 4,
+                               type: "dynamic"
+                           }, "bullet");
+
+                           fire1.SetLinearVelocity(collie.Box2d.vec2(d*20, 0), fire1.GetWorldCenter());
+                       break;*/
+                }
+            });
+
+            collie.util.addEventListener(document.body, "keyup", function (e) {
+                var velocity = player.GetLinearVelocity();
+                rTimer.stop();
+
+                switch (e.keyCode) {
+                    case 39 : //right
+                        htKeyPressed.right = false;
+                        player.SetLinearVelocity(collie.Box2d.vec2(0, velocity.y));
+                        break;
+                    case 37 : //left
+                        htKeyPressed.left = false;
+                        player.SetLinearVelocity(collie.Box2d.vec2(0, velocity.y));
+                        break;
+                }
+            });
+
+            //oConsole.load(); // FPS,CANVAS
+            collie.Renderer.addLayer(layer);
+            collie.Renderer.load(document.getElementById("container"));
+            collie.Renderer.start("300fps", function () {
+                var velocity = player.GetLinearVelocity();
+
+                if (htKeyPressed.left) {
+                    player.SetLinearVelocity(collie.Box2d.vec2(-10, velocity.y));
+                }
+                if (htKeyPressed.right) {
+                    player.SetLinearVelocity(collie.Box2d.vec2(10, velocity.y));
+                }
+            });
+            box2d.load(false);
+        });
+
+    </script>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div>
+    <% if (user.provider == undefined || user.provider == '') { %>
+    <h3><span class="fa fa-user"></span> 로컬 프로필</h3>
+    <br>
+    <p>
+        <button id="hide">Hide</button>
+        <strong>이메일</strong>: <%= user.id_email %><br><br>
+        <strong>별명</strong>: <%= user.name %>
+        <strong>별명</strong>: <%= user.image %>
+        <img src="<%=user.image%>" alt="이미지 설명" />
+        <!--
+        $(document).ready(function(){
+        $("#hide").click(function(){
+        });
+        }
+        -->
+    </p>
+    <% } else if (user.provider == 'google') { %>
+    <h3 class="text-primary"><span class="fa fa-google"></span> 구글 프로필</h3>
+    <br>
+    <p>
+        <strong>아이디</strong>: <%= user.google.id %><br><br>
+        <strong>이메일</strong>: <%= user.google.id_email %><br><br>
+        <strong>이름</strong>: <%= user.google.name %>
+    </p>
+    <% } %>
+</div>

@@ -1,0 +1,1899 @@
+<!DOCTYPE html>
+<html lang="ko" id="td1">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>Cosy 화면</title>
+    <link rel='stylesheet' href='stylesheets/chatbot.css'/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <script src='https://www.riccardotartaglia.it/freudjs/js/freud.min.js'></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <style type="text/css">
+        * {
+            margin : 0;
+            padding : 0;
+            line-height : 1;
+        }
+        html, body{
+            width : 100%;
+            height : 100%;
+            background: url("http://210.89.190.28:44444/backg/level0.png");
+            background-repeat: no-repeat;
+            -webkit-background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <script type="text/javascript">
+
+            window.onload = function() {
+
+                // 1. 페이지 로드되면  COSY/ME 선택 화면
+                $('#chatSelect').show();
+
+                // 2. COSY 선택 시
+                $("#chat1").click(function(e){
+
+                    $('#chatSelect').hide();
+                    $('#aboutCosy').show();
+
+                    var user_point = $('#user_point').val();
+                    var code = $('#code').val();
+                    var node;
+
+                    if(code == 0){    // 스무고개 열어줄 수 없음.
+                      swal("오늘은 코지가 힘들어해요 내일 또 와주세요!", { buttons: false, timer: 3000});
+                      setTimeout(function() { $('#chatSelect').show(); $('#aboutCosy').hide();}, 3000);
+                    }
+
+                    else{             // 정상적으로 스무고개 열어줌.
+
+                      // 모래성
+                                          var nodes1 = {
+                                              "start": {
+                                                  wait: 200,
+                                                  sentence: [
+                                                      {
+                                                          mex: '반가워요 처음 보는 것 같은데 저를 아시나요?',
+                                                          wait: 500
+                                                      },
+                                                      {
+                                                          mex: "지금은 아무것도 기억나지 않아요.\n" +
+                                                          "이야기하다 보면 기억이 나겠죠?",
+                                                          wait: 500
+                                                      }
+                                                  ],
+                                                  r: {
+                                                      wait: 1800,
+                                                      type: "button",
+                                                      el: [
+                                                          {type: "nav", value: "q2", label: "맞아요. 기억할 수 있겠죠?"},
+                                                          {type: "nav", value: "q2", label: "그럴지도 모르죠 그런데 왜 기억을 잃었나요?"},
+                                                          {type: "nav", value: "q2", label: "기억을 모두 잃다니 정말 바보같아요."}
+                                                      ]
+                                                  }
+                                              },
+                                              "q2": {
+                                                  wait: 600,
+                                                  sentence: [
+                                                      {
+                                                          mex: '글쎄요.. 제가 금붕어이긴 한데.. 그래도 기억해낼 수 있다면 잊었다는 것은 중요하지 않아요',
+                                                          wait: 200
+                                                      }
+                                                  ],
+                                                  r: {
+                                                      wait: 1900,
+                                                      type: "button",
+                                                      el: [
+                                                          {type: "nav", value: "q3", label: "혹시 바다로 오기전에 살던 곳은 기억할 수 있어요?"},
+                                                          {type: "nav", value: "q3", label: "그래도 조금이나마 기억나는 것은 없나요?"},
+                                                          {type: "nav", value: "q3", label: "정말 모든 기억이 하나도 없는 건가요?"}
+                                                      ]
+                                                  }
+                                              },
+                                              "q3": {
+                                                  wait: 800,
+                                                  sentence: [
+                                                      {
+                                                          mex: '음… 지금 기억나는 것은…\n' +
+                                                          '가끔은 평평하기도 하고 가끔은 우뚝 솟아 있기도 했던 곳에 살았던 것 같아요.',
+                                                          wait: 200
+                                                      }
+                                                  ],
+                                                  r: {
+                                                      wait: 1900,
+                                                      type: "button",
+                                                      el: [
+                                                          {type: "nav", value: "q4", label: "혹시 나무가 많은 산에 살았던 건가요?"},
+                                                          {type: "nav", value: "q4", label: "혹시 산호초가 많은 저쪽 언덕에 있었던 것 아니에요?"},
+                                                          {type: "nav", value: "q4", label: "혹시 넓고 평평한 들판에 있었나요?"}
+                                                      ]
+                                                  }
+                                              },
+                                              "q4": {
+                                                  wait: 500,
+                                                  sentence: [
+                                                      {
+                                                          mex: '음.. 그게 뭐죠?\n' +
+                                                          '어떤 곳인지는 잘모르겠지만 거긴 아니었던 것 같아요.️',
+                                                          wait: 0
+                                                      }
+                                                  ],
+                                                  r: {
+                                                      wait: 1900,
+                                                      type: "button",
+                                                      el: [
+                                                          {type: "nav", value: "q5", label: "그런가요.. 혹시 그럼 어디일까요?"},
+                                                          {type: "nav", value: "q5", label: "맞아요 금붕어가 살기엔 힘들 수도 있죠…"},
+                                                          {type: "nav", value: "q5", label: "또 다른 것은 기억나지 않나요?"}
+                                                      ]
+                                                  }
+                                              },
+                                              "q5": {
+                                                  wait: 800,
+                                                  type: "text",
+                                                  sentence: [
+                                                      {
+                                                          mex: '글쎄요.. 그것보다 당신의 이야기도 듣고싶어요\n' +
+                                                          '그러다 보면 기억나지 않을까요?\n' +
+                                                          '나중에 어떤 곳에서 살고 싶으세요?'
+                                                      }
+                                                  ],
+                                                  r: {
+                                                      wait: 800,
+                                                      type: "button",
+                                                      el: [
+                                                          {type: "nav", value: "q6", label: "저는 큰 창문으로 해변이 보이는 집에서 살고싶어요."},
+                                                          {type: "nav", value: "q6", label: "저는 마치 궁전이나 성처럼 크고 웅장한 곳에서 살거에요."},
+                                                          {type: "nav", value: "q6", label: "숲 속에서 살고 싶어요 흙과 모래 냄새가 나는 곳이요."}
+                                                      ]
+                                                  }
+                                              },
+                                              "q6": {
+                                                  wait: 800,
+                                                  type: "text",
+                                                  sentence: [
+                                                      {
+                                                          mex: '음! 잠깐만…\n' +
+                                                          '맞아요 저 해변에 있었어요 모래가 평평하게 가득하고\n' +
+                                                          '가끔씩 누군가 멋지게 만들어놓은 모래성이 있었어요.'
+                                                      }
+                                                  ],
+                                                  r: {
+                                                      wait: 800,
+                                                      type: "button",
+                                                      el: [
+                                                          {type: "link", value: "http://210.89.190.28:44444/devcamp" , label:"떠나보아요~!"},
+                                                      ]
+                                                  }
+                                              }
+                                          };
+
+                      // 바이킹
+                                              var nodes2 = {
+                                                  "start": {
+                                                      wait: 200,
+                                                      sentence: [
+                                                          {
+                                                              mex: '어디서 봤던 분 같은데…\n' +
+                                                              '우리 만난 적이 있던가요 ?',
+                                                              wait: 500
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q2", label: "맞아요. 우리 같이 이야기했잖아요."},
+                                                              {type: "nav", value: "q2", label: "글쎄요… 우리가 만났던 가요?"},
+                                                              {type: "nav", value: "q2", label: "어떻게 까먹을 수가 있어요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q2": {
+                                                      wait: 600,
+                                                      sentence: [
+                                                          {
+                                                              mex: '아! 미안해요 우리 같이 모래성에 대한 기억을 찾았었죠\n' +
+                                                              '오늘도 같이 이야기해 주실 건가요?',
+                                                              wait: 200
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q3", label: "그래요 어떤 이야기를 해줄 거예요?"},
+                                                              {type: "nav", value: "q3", label: "혹시 기억난 것이 있나요?"},
+                                                              {type: "nav", value: "q3", label: "네 물어보고 싶은 것이 있는데…"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q3": {
+                                                      wait: 800,
+                                                      sentence: [
+                                                          {
+                                                              mex: '아니에요 오늘은 제가 물어보고 싶은 것이 있어요. 지금이 아니면 까먹을 것 같아요. 바다 위에는 뭐가 있나요?',
+                                                              wait: 200
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q4", label: "가까이 가본적 있나요?"},
+                                                              {type: "nav", value: "q4", label: "바다 위를 한 번도 본적 없나요?"},
+                                                              {type: "nav", value: "q4", label: "같이 한 번 올라가 봐요."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q4": {
+                                                      wait: 500,
+                                                      sentence: [
+                                                          {
+                                                              mex: '글쎄요.. 아직은 무서워서 못 갈 것 같아요. 그래도 이 커다란 그림자는 누구 것인지 궁금해요.️',
+                                                              wait: 0
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q5", label: "아주 큰 새 아닐까요?"},
+                                                              {type: "nav", value: "q5", label: "우리 위로 배가 지나가는 것 같아요."},
+                                                              {type: "nav", value: "q5", label: "하늘 위로 비행기가 지나가나 봐요."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q5": {
+                                                      wait: 800,
+                                                      type: "text",
+                                                      sentence: [
+                                                          {
+                                                              mex: '아 그런가요 그건 뭐 하는 거예요? 왜 우리 위로 지나다니는 거예요?'
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q6", label: "사람들이 타고 가는 중일 거예요."},
+                                                              {type: "nav", value: "q6", label: "그냥 왔다 갔다 반복하고 있을 거예요."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q6": {
+                                                      wait: 800,
+                                                      type: "text",
+                                                      sentence: [
+                                                          {
+                                                              mex: '비슷한 기억이 날 것만 같아요... 좀 더 말해 줄 수 있나요?'
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q7", label: "항상 물 위에 있을 거예요."},
+                                                              {type: "nav", value: "q7", label: "무거워도 아주 빠르게 움직이는 거예요."},
+                                                              {type: "nav", value: "q7", label: "사람들이 정말 많이 타고 있을 거예요."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q7": {
+                                                      wait: 800,
+                                                      type: "text",
+                                                      sentence: [
+                                                          {
+                                                              mex: '아 저 봤던 것 같아요. 사람들을 가득 태우고\n' +
+                                                              '하늘에서 날아다니면서 왔다 갔다 하던 신비한 것을요.'
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "link", value: "http://210.89.190.28:44444/devcamp" , label:"떠나보아요~!"},
+                                                          ]
+                                                      }
+                                                  }
+                                              };
+
+                        // 풍선차
+                                              var nodes3 = {
+                                                  "start": {
+                                                      wait: 200,
+                                                      sentence: [
+                                                          {
+                                                              mex: '아, 어서 와요. 저 지금까지 제 입에서 나오는 이 동그란 것을 구경하고 있었어요.',
+                                                              wait: 500
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q2", label: "아 공기방울 말하는 거예요?"},
+                                                              {type: "nav", value: "q2", label: "그건 O2가 위로 올라가는 거예요."},
+                                                              {type: "nav", value: "q2", label: "그런 걸 왜 보고 있어요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q2": {
+                                                      wait: 600,
+                                                      sentence: [
+                                                          {
+                                                              mex: '왠지 쳐다보는 것만으로 미소가 지어질 것 같아요. 다들 그런가요?',
+                                                              wait: 200
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q3", label: "저도 그런 편이에요."},
+                                                              {type: "nav", value: "q3", label: "아니요 그렇지 않아요."},
+                                                              {type: "nav", value: "q3", label: "저도 잘 모르겠네요."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q3": {
+                                                      wait: 800,
+                                                      sentence: [
+                                                          {
+                                                              mex: '저도 이런 동그라미를 나눠줄 수 있을까요?\n' +
+                                                              '보기만 해도 행복해지는 동그라미요.',
+                                                              wait: 200
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q4", label: "왠지 잘 할 것 같은걸요?"},
+                                                              {type: "nav", value: "q4", label: "저도 그런 일을 돕고 싶어요."},
+                                                              {type: "nav", value: "q4", label: "잘 못할 것 같아요."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q4": {
+                                                      wait: 500,
+                                                      sentence: [
+                                                          {
+                                                              mex: '언젠간 꼭 해내고 말 거예요.\n' +
+                                                              '당신도 좋아하는 동그라미가 있나요?',
+                                                              wait: 0
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q5", label: "당연히 동전이죠."},
+                                                              {type: "nav", value: "q5", label: "달콤한 사탕이 좋아요."},
+                                                              {type: "nav", value: "q5", label: "아름다운 구슬을 좋아해요."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q5": {
+                                                      wait: 800,
+                                                      type: "text",
+                                                      sentence: [
+                                                          {
+                                                              mex: '그렇군요 하지만 그 동그라미는 구름과 가까워지지 않아요.\n' +
+                                                              '아!, 저 구름을 향해서 가고 싶어 하는 동그라미를 나누어주는 걸 본적 있어요!\n' +
+                                                              '그 동그라미는 모두에게 행복한 미소를 짓게 만들었어요.'
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "link", value: "http://210.89.190.28:44444/devcamp" , label:"떠나보아요~!"},
+                                                          ]
+                                                      }
+                                                  }
+                                              };
+
+                        // 폭포
+                                              var nodes4 = {
+                                                  "start": {
+                                                      wait: 200,
+                                                      sentence: [
+                                                          {
+                                                              mex: '오랜만이에요.\n' +
+                                                              '또 찾아와 주었군요.\n' +
+                                                              '뭐하고 있었나요?',
+                                                              wait: 500
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q2", label: "공부하고 있었어요."},
+                                                              {type: "nav", value: "q2", label: "일하는 중이었어요."},
+                                                              {type: "nav", value: "q2", label: "그냥 휴식을 취하고 있었어요."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q2": {
+                                                      wait: 600,
+                                                      sentence: [
+                                                          {
+                                                              mex: '그래요 가끔은 휴식도 중요하다고 들은 것 같아요\n' +
+                                                              '주로 어떤 것을 하면서 쉬나요?',
+                                                              wait: 200
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q3", label: "그냥 아무것도 하지 않아요."},
+                                                              {type: "nav", value: "q3", label: "운동을 하거나 활동적인 것을 해요."},
+                                                              {type: "nav", value: "q3", label: "친구를 만나거나 티비 같은 것을 봐요."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q3": {
+                                                      wait: 800,
+                                                      sentence: [
+                                                          {
+                                                              mex: '그렇군요 저는 빠른 물살을 타고\n' +
+                                                              '흘러 다니는 것을 좋아해요.\n' +
+                                                              '아무것도 하지 않고 생각에 집중할 수 있거든요.',
+                                                              wait: 200
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q4", label: "물살이 많이 빠른가요?"},
+                                                              {type: "nav", value: "q4", label: "자주 그런 물살이 흘러오나요?"},
+                                                              {type: "nav", value: "q4", label: "물살이 빠르면 위험하지 않을까요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q4": {
+                                                      wait: 500,
+                                                      sentence: [
+                                                          {
+                                                              mex: '네 그런 편이에요 물살 속에 있다 보면\n' +
+                                                              '아, 물의 소리를 들은 적이 있나요?️',
+                                                              wait: 0
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q5", label: "들어본 적 없는 것 같아요."},
+                                                              {type: "nav", value: "q5", label: "네 하지만 물속에서는 잘 들리지 않을 거예요."},
+                                                              {type: "nav", value: "q5", label: "물이 소리를 낸다고요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q5": {
+                                                      wait: 800,
+                                                      type: "text",
+                                                      sentence: [
+                                                          {
+                                                              mex: '저는 들어 봤어요 아주 많은 물이 한꺼번에\n' +
+                                                              '빠르게 움직이고 아래에 있던 물과 만나면서\n' +
+                                                              '큰 소리를 냈어요. 누군가와 함께 듣고 있었죠.'
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q6", label: "수도꼭지를 틀어놓은 건가요?"},
+                                                              {type: "nav", value: "q6", label: "폭포라는 것이 아닐까요?"},
+                                                              {type: "nav", value: "q6", label: "비가 오던 날이었나요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q6": {
+                                                      wait: 800,
+                                                      type: "text",
+                                                      sentence: [
+                                                          {
+                                                              mex: '그것을 뭐라고 부르는지 저는 잘 알지 못하지만\n' +
+                                                              '물이 내는 소리는 거칠긴 해도 아름다웠어요.\n' +
+                                                              '마치 자주 듣는 음악을 크게 틀어놓은 것처럼요.'
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "link", value: "http://210.89.190.28:44444/devcamp" , label:"떠나보아요~!"},
+                                                          ]
+                                                      }
+                                                  }
+                                              };
+
+                        // 달
+                                              var nodes5 = {
+                                                  "start": {
+                                                      wait: 200,
+                                                      sentence: [
+                                                          {
+                                                              mex: '궁금한 것이 있어요.\n' +
+                                                              '해가 지고 밤이 되면 어떻게 되나요?',
+                                                              wait: 500
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q2", label: "어두워지고 추워지죠."},
+                                                              {type: "nav", value: "q2", label: "전 항상 피곤해지는 것 같아요."},
+                                                              {type: "nav", value: "q2", label: "주변이 조용해지는 것 같아요."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q2": {
+                                                      wait: 600,
+                                                      sentence: [
+                                                          {
+                                                              mex: '요즘 저에게 정말 고마운 친구가 생긴 것 같아요.\n' +
+                                                              '조금씩 변해가기는 해도 항상 고마운 일을 해주는 친구예요.',
+                                                              wait: 200
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q3", label: "어떤 일을 해주는 친군가요?"},
+                                                              {type: "nav", value: "q3", label: "변해가는 친구가 항상 고마울 수 있나요?"},
+                                                              {type: "nav", value: "q3", label: "그 친구가 누군지 궁금해지네요."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q3": {
+                                                      wait: 800,
+                                                      sentence: [
+                                                          {
+                                                              mex: '밤에만 만날 수 있고 말도 걸 순 없지만\n' +
+                                                              '항상 저를 생각해 주고 있다는 걸 느낄 수 있어요.',
+                                                              wait: 200
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q4", label: "말도 할 수 없는 친구가 있을 수 있나요?"},
+                                                              {type: "nav", value: "q4", label: "어떻게 생각해주고 있다는 거죠?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q4": {
+                                                      wait: 500,
+                                                      sentence: [
+                                                          {
+                                                              mex: '저도 기억해내게 된지 오래되지 않았지만\n' +
+                                                              '다시 기억하기 아주 오래전부터 저를 위해 있어주었어요.️',
+                                                              wait: 0
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q5", label: "저도 만나보고 싶은 친구네요."},
+                                                              {type: "nav", value: "q5", label: "꼭 고맙다고 말해주고 싶을 것 같아요."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q5": {
+                                                      wait: 800,
+                                                      type: "text",
+                                                      sentence: [
+                                                          {
+                                                              mex: '네 맞아요. 당신에게도 분명 비슷한 친구가 있을 거예요\n' +
+                                                              '저처럼 너무 멀어져서 고마움을 전할 수 없기 전에 \n' +
+                                                              '마음을 전달해 보는 것도 좋을 것 같아요.'
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "link", value: "http://210.89.190.28:44444/devcamp" , label:"떠나보아요~!"},
+                                                          ]
+                                                      }
+                                                  }
+                                              };
+
+                        // 관람차
+                                              var nodes6 = {
+                                                  "start": {
+                                                      wait: 200,
+                                                      sentence: [
+                                                          {
+                                                              mex: '아 반가워요!\n' +
+                                                              '얼른 와보세요 저 기억이 날 것 같아요.',
+                                                              wait: 500
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q2", label: "축하해요! 정말이에요?"},
+                                                              {type: "nav", value: "q2", label: "잠시만요. 금방 갈게요"},
+                                                              {type: "nav", value: "q2", label: "지금은 안될 것 같은데요..."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q2": {
+                                                      wait: 600,
+                                                      sentence: [
+                                                          {
+                                                              mex: '지금은 그럴 시간이 없어요\n' +
+                                                              '또다시 잊어버릴 수도 있단 말이에요.\n' +
+                                                              '무언가 아주 위태로운 것을 지켜봤던 것 같아요.',
+                                                              wait: 200
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q3", label: "더 기억나는 부분은 없는 건가요?"},
+                                                              {type: "nav", value: "q3", label: "혹시 불법적인 일은 아니겠죠?"},
+                                                              {type: "nav", value: "q3", label: "좀 더 자세히 말해주세요."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q3": {
+                                                      wait: 800,
+                                                      sentence: [
+                                                          {
+                                                              mex: '더는 기억나지 않아요...\n' +
+                                                              '어떤 것이었을 까요? 머리가 빙글빙글 도는 것 같아요.\n' +
+                                                              '아!',
+                                                              wait: 200
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q4", label: "왜 그래요? 어디 아파요?"},
+                                                              {type: "nav", value: "q4", label: "혹시 기억이라도 난 건가요?"},
+                                                              {type: "nav", value: "q4", label: "다시 까먹은 건가요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q4": {
+                                                      wait: 500,
+                                                      sentence: [
+                                                          {
+                                                              mex: '빙글빙글!\n' +
+                                                              '위태롭지만 빙글빙글 돌아가고 있었던 것 같아요.',
+                                                              wait: 0
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q5", label: "혹시 시계 아니에요?"},
+                                                              {type: "nav", value: "q5", label: "위태로운 거면 불꽃 아니었을까요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q5": {
+                                                      wait: 500,
+                                                      sentence: [
+                                                          {
+                                                              mex: '아니에요 그렇게 작지 않고\n' +
+                                                              '저와 당신보다 몇 배는 더 큰 거예요.',
+                                                              wait: 0
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q6", label: "어떤 것이 돌고 있었는지 기억나나요?"},
+                                                              {type: "nav", value: "q6", label: "어떻게 생겼는지 기억나요?"},
+                                                              {type: "nav", value: "q6", label: "혹시 사람이 타고 있었나요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q6": {
+                                                      wait: 800,
+                                                      type: "text",
+                                                      sentence: [
+                                                          {
+                                                              mex: '맞아요! \n' +
+                                                              '아주 커다란 동그라미가 돌아가고 있었고 거기에 매달린 조그마한 집 안에 사람들이 살고 있었어요.\n' +
+                                                              '위태로웠지만 그 사람들은 행복하게 웃고 있었어요.'
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "link", value: "http://210.89.190.28:44444/devcamp" , label:"떠나보아요~!"},
+                                                          ]
+                                                      }
+                                                  }
+                                              };
+
+                    // 별똥별
+                                              var nodes7 = {
+                                                  "start": {
+                                                      wait: 200,
+                                                      sentence: [
+                                                          {
+                                                              mex: '어젯밤에 하늘에서 꽃잎들이 아주 빠르게 떨어졌어요.',
+                                                              wait: 500
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q2", label: "어떤 꽃이었나요?"},
+                                                              {type: "nav", value: "q2", label: "꽃잎은 어디에 있어요?"},
+                                                              {type: "nav", value: "q2", label: "얼마나 빠르게 떨어졌나요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q2": {
+                                                      wait: 600,
+                                                      sentence: [
+                                                          {
+                                                              mex: '음.. 그게 너무 빨라서\n' +
+                                                              '볼 수 없었어요. 또 너무 멀리 떨어져서 찾아갈 수도 없었죠.',
+                                                              wait: 200
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q3", label: "처음 보는 꽃이었나요?"},
+                                                              {type: "nav", value: "q3", label: "그렇게 빠르게 떨어졌나요?"},
+                                                              {type: "nav", value: "q3", label: "많이 아쉬웠겠어요."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q3": {
+                                                      wait: 800,
+                                                      sentence: [
+                                                          {
+                                                              mex: '맞아요 그래도 그것보다.\n' +
+                                                              '마지막 떨어지는 모습을 보면서 \n' +
+                                                              '새로운 시작을 응원하고 싶었는데..',
+                                                              wait: 200
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q4", label: "떨어지면 끝, 아닌가요?"},
+                                                              {type: "nav", value: "q4", label: "마지막 모습을 바라보았다면 슬펐겠어요."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q4": {
+                                                      wait: 500,
+                                                      sentence: [
+                                                          {
+                                                              mex: '아니에요 저는 그 꽃잎이\n' +
+                                                              '새롭게 다시 시작할 거라고 믿고 있어요.\n' +
+                                                              '아, 그때 누군가도 그렇게 말해주었는데.',
+                                                              wait: 0
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q5", label: "마지막이 아니라고 말했다는 건가요?"},
+                                                              {type: "nav", value: "q5", label: "꽃잎에 대해서 그렇게 말했다는 건가요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q5": {
+                                                      wait: 500,
+                                                      sentence: [
+                                                          {
+                                                              mex: '네 맞아요 그리고 꽃잎이 아니라\n' +
+                                                              '꽃잎 같다고 표현했어요. 하늘에 열려있던 꽃이라고요.',
+                                                              wait: 0
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q6", label: "꽃잎 같은 것이 하늘에서 떨어진다고요?"},
+                                                              {type: "nav", value: "q6", label: "하늘에 열려있는 꽃이 뭘지 궁금하네요."},
+                                                              {type: "nav", value: "q6", label: "눈이 내린 걸까요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q6": {
+                                                      wait: 800,
+                                                      type: "text",
+                                                      sentence: [
+                                                          {
+                                                              mex: '글쎄요, 제 기억을 볼 수만 있다면 당신이 저에게\n' +
+                                                              '무엇인지 알려줄 수 있을 텐데.\n' +
+                                                              '모습은 확실히 기억나지만 이름이 무엇인지 잘 모르겠어요.'
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "link", value: "http://210.89.190.28:44444/devcamp" , label:"떠나보아요~!"},
+                                                          ]
+                                                      }
+                                                  }
+                                              };
+
+                    // 롤러코스터
+                                              var nodes8 = {
+                                                  "start": {
+                                                      wait: 200,
+                                                      sentence: [
+                                                          {
+                                                              mex: '해주고 싶은 이야기가 있었는데 요새 통 만나지 못했어요.',
+                                                              wait: 500
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q2", label: "제가 그 사람인걸요?"},
+                                                              {type: "nav", value: "q2", label: "그새 또 까먹은 거예요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q2": {
+                                                      wait: 600,
+                                                      sentence: [
+                                                          {
+                                                              mex: '아 미안해요 잠깐 까먹었어요.\n' +
+                                                              '해주고 싶던 말이 있었는데...\n' +
+                                                              '기억이 잘 나지 않아요.',
+                                                              wait: 200
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q3", label: "괜찮아요. 그냥 이야기하러 온 거니까요."},
+                                                              {type: "nav", value: "q3", label: "지금 저 가지고 장난치는 건가요?"},
+                                                              {type: "nav", value: "q3", label: "천천히 다시 생각해봐요."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q3": {
+                                                      wait: 800,
+                                                      sentence: [
+                                                          {
+                                                              mex: '정말 미안해요.\n' +
+                                                              '저기 높은 산에 대한 이야기 같았는데...\n' +
+                                                              '이것 밖에 기억나지 않네요.',
+                                                              wait: 200
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q4", label: "산에 오르는 건 정말 힘들어요."},
+                                                              {type: "nav", value: "q4", label: "저는 매주 부장님과 함께 산에 올라가요."},
+                                                              {type: "nav", value: "q4", label: "산에 올라가면 어떤 기분인가요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q4": {
+                                                      wait: 500,
+                                                      sentence: [
+                                                          {
+                                                              mex: '저는 아직 산에 가본 적은 없어요.\n' +
+                                                              '다만 산과 산을 아주 빠르게 달리는 것을 본적 있어요.',
+                                                              wait: 0
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q5", label: "사슴 아닐까요?"},
+                                                              {type: "nav", value: "q5", label: "사람이었나요?"},
+                                                              {type: "nav", value: "q5", label: "새가 날아다닌 건 아닐까요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q5": {
+                                                      wait: 500,
+                                                      sentence: [
+                                                          {
+                                                              mex: '아닌 것 같아요.\n' +
+                                                              '항상 같은 길을 다니지만 누구보다\n' +
+                                                              '활기 있고 힘차게 달리고 있었어요.',
+                                                              wait: 0
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q6", label: "같은 길을 다니며 어떻게 활기찰 수가 있죠?"},
+                                                              {type: "nav", value: "q6", label: "자신의 일을 정말 즐기고 있는 건가 봐요."},
+                                                              {type: "nav", value: "q6", label: "어떤 것이었을지 정말 궁금하네요."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q6": {
+                                                      wait: 800,
+                                                      type: "text",
+                                                      sentence: [
+                                                          {
+                                                              mex: '정확히 기억 난 것 같아요.\n' +
+                                                              '힘들어 보일 때도 있지만 그것조차 이겨내는 것을\n' +
+                                                              '즐기는 것 같아 보였어요.'
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "link", value: "http://210.89.190.28:44444/devcamp" , label:"떠나보아요~!"},
+                                                          ]
+                                                      }
+                                                  }
+                                              };
+
+                      // 게
+                                              var nodes9 = {
+                                                  "start": {
+                                                      wait: 200,
+                                                      sentence: [
+                                                          {
+                                                              mex: '반가워요.  오늘도 대화하러 와주었군요',
+                                                              wait: 500
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q2", label: "저도 반가워요. 잘 지냈나요?"},
+                                                              {type: "nav", value: "q2", label: "새롭게 기억난 것은 없나요?"},
+                                                              {type: "nav", value: "q2", label: "오늘은 정확히 기억하고 있네요. 고마워요."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q2": {
+                                                      wait: 600,
+                                                      sentence: [
+                                                          {
+                                                              mex: '네 그럼요 아직도 정확하진 않지만\n' +
+                                                              '점점 더 많은 기억이 나고 있어서 기분이 참 좋아요.',
+                                                              wait: 200
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q3", label: "잘 됐네요. 새로운 기억은 뭐예요?"},
+                                                              {type: "nav", value: "q3", label: "조금만 더 정확히 기억해내면\n" +
+                                                                  "참 좋을 것 같아요."},
+                                                              {type: "nav", value: "q3", label: "다 제가 도와준 덕분이란 거\n" +
+                                                                  "알고 있죠?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q3": {
+                                                      wait: 800,
+                                                      sentence: [
+                                                          {
+                                                              mex: '항상 고맙다고 말해주고 싶어요.\n' +
+                                                              '이번에는 움직이는 돌을 보고 기억이 났어요.',
+                                                              wait: 200
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q4", label: "돌은 움직일 수 없어요."},
+                                                              {type: "nav", value: "q4", label: "돌이 아니라 다른 거 아니었을까요?"},
+                                                              {type: "nav", value: "q4", label: "파도에 돌이 휩쓸렸던 건 아닐까요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q4": {
+                                                      wait: 500,
+                                                      sentence: [
+                                                          {
+                                                              mex: '글쎄요.. 신기하게 생긴 돌들이 옆으로 움직였어요.\n' +
+                                                              '저도 신기해서 가까이 가봤는데 날카로워서 상처가 날뻔했어요.',
+                                                              wait: 0
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q5", label: "돌이 날카롭게 부러졌나 봐요. \n" +
+                                                                  "가까이 가지 마세요."},
+                                                              {type: "nav", value: "q5", label: "저런! 다치지는 않았나요?"},
+                                                              {type: "nav", value: "q5", label: "앞으론 좀 더 조심해야겠어요."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q5": {
+                                                      wait: 500,
+                                                      sentence: [
+                                                          {
+                                                              mex: '걱정해줘서 고마워요.\n' +
+                                                              '자주 보였는데 오늘은 보이지 않네요...',
+                                                              wait: 0
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q6", label: "아쉽네요 저도 보고 싶은데..."},
+                                                              {type: "nav", value: "q6", label: "그래도 그건 돌이 아닐 거라고 생각해요."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q6": {
+                                                      wait: 800,
+                                                      type: "text",
+                                                      sentence: [
+                                                          {
+                                                              mex: '어! 저기 그 돌들이 움직이고 있어요!\n' +
+                                                              '제 말이 맞죠? 돌들이 빠르게 움직이고 있잖아요.'
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "link", value: "http://210.89.190.28:44444/devcamp" , label:"떠나보아요~!"},
+                                                          ]
+                                                      }
+                                                  }
+                                              };
+
+                      // 무지개
+                                              var nodes10 = {
+                                                  "start": {
+                                                      wait: 200,
+                                                      sentence: [
+                                                          {
+                                                              mex: '오늘은 정말 신비로운 이야기를 해주고 싶어요.',
+                                                              wait: 500
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q2", label: "기억에 대한 이야기인가요?"},
+                                                              {type: "nav", value: "q2", label: "말해주려다가 까먹은 건 아니겠죠?"},
+                                                              {type: "nav", value: "q2", label: "저에 대한 이야기인가요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q2": {
+                                                      wait: 600,
+                                                      sentence: [
+                                                          {
+                                                              mex: '아니에요. 오늘 폭포 밑을 지나다가 발견했어요.\n' +
+                                                              '하지만 똑바로 바라보면 자세히 볼 수 없어요.',
+                                                              wait: 200
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q3", label: "신기루라도 본 것 아니에요?"},
+                                                              {type: "nav", value: "q3", label: "그런 게 어디 있어요 똑바로 보면 안 보인다니요."},
+                                                              {type: "nav", value: "q3", label: "세상엔 어떤걸 발견한 거예요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q3": {
+                                                      wait: 800,
+                                                      sentence: [
+                                                          {
+                                                              mex: '진짜예요. 정면으로 쳐다볼 때보다\n' +
+                                                              '옆에 서서 바라볼 때 더 아름다운 순간이었어요.',
+                                                              wait: 200
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q4", label: "그게 뭐예요?"},
+                                                              {type: "nav", value: "q4", label: "저도 보여주세요."},
+                                                              {type: "nav", value: "q4", label: "어디 있는데요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q4": {
+                                                      wait: 500,
+                                                      sentence: [
+                                                          {
+                                                              mex: '지금은 보이지 않아요.\n' +
+                                                              '아 그리고 모양도 색도 어떻다고 설명할 순 없어요.',
+                                                              wait: 0
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q5", label: "사실 아직 잘 못 믿겠어요."},
+                                                              {type: "nav", value: "q5", label: "진짜 신비로운 이야기네요."},
+                                                              {type: "nav", value: "q5", label: "세상에 그런 게 존재할리 없어요."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q5": {
+                                                      wait: 500,
+                                                      sentence: [
+                                                          {
+                                                              mex: '누군가 저에게 신비한 아름다움을 가진\n' +
+                                                              '이것의 이름을 알려주었었는데...',
+                                                              wait: 0
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q6", label: "그게 누구예요?"},
+                                                              {type: "nav", value: "q6", label: "이름이 뭐였죠?"},
+                                                              {type: "nav", value: "q6", label: "기억 안 나는 거죠?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q6": {
+                                                      wait: 800,
+                                                      type: "text",
+                                                      sentence: [
+                                                          {
+                                                              mex: '아! 무지개! 무지개라고 했어요.\n' +
+                                                              '그리고 정확히 설명할 수 없기 때문에\n' +
+                                                              '누구에게나 아름답다고 해주었어요.'
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "link", value: "http://210.89.190.28:44444/devcamp" , label:"떠나보아요~!"},
+                                                          ]
+                                                      }
+                                                  }
+                                              };
+
+                    // 열대우림
+                                              var nodes11 = {
+                                                  "start": {
+                                                      wait: 200,
+                                                      sentence: [
+                                                          {
+                                                              mex: '이번엔 이름도 얼굴도 까먹지 않았어요.\n' +
+                                                              '항상 도와주어서 고맙다고 말하고 싶었어요.',
+                                                              wait: 500
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q2", label: "아니에요 저도 즐거운걸요."},
+                                                              {type: "nav", value: "q2", label: "그럼요 당연히 그래야죠."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q2": {
+                                                      wait: 600,
+                                                      sentence: [
+                                                          {
+                                                              mex: '혹시 의지할 만한 친구들이 있나요?',
+                                                              wait: 200
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q3", label: "그럼요 제 주변에는 정말 많아요."},
+                                                              {type: "nav", value: "q3", label: "글쎄요 생각해 본 적 없는 이야기네요."},
+                                                              {type: "nav", value: "q3", label: "아니요 별로 없어요."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q3": {
+                                                      wait: 800,
+                                                      sentence: [
+                                                          {
+                                                              mex: '그렇군요 사실 저는 당신이 없을 땐 항상 혼자라서\n' +
+                                                              '가끔은 외롭기도 하네요.',
+                                                              wait: 200
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q4", label: "제가 좀 더 자주 이야기하러 올게요."},
+                                                              {type: "nav", value: "q4", label: "괜찮아요 좋은 친구들이 생길 거예요."},
+                                                              {type: "nav", value: "q4", label: "혼자인 게 좋을 때도 있는 법이에요."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q4": {
+                                                      wait: 500,
+                                                      sentence: [
+                                                          {
+                                                              mex: '위로해주어서 고마워요.\n' +
+                                                              '오래전에 항상 같이 있는 친구들을 본 적이 있어요.\n' +
+                                                              '그리고 모두 비슷한 모습을 하고 있었어요.',
+                                                              wait: 0
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q5", label: "신기하네요. 어떤 모습이었어요?"},
+                                                              {type: "nav", value: "q5", label: "몇 명이나 같이 있었어요?"},
+                                                              {type: "nav", value: "q5", label: "모여서 무엇을 하고 있었을까요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q5": {
+                                                      wait: 500,
+                                                      sentence: [
+                                                          {
+                                                              mex: '글쎄요.. 설명하긴 힘들지만\n' +
+                                                              '항상 같은 모습으로 서로 의지하는 게 보기 좋았어요.\n' +
+                                                              '저는 친해질 수 없었지만요.',
+                                                              wait: 0
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q6", label: "다가오는 것을 싫어한 건가요?"},
+                                                              {type: "nav", value: "q6", label: "그들끼리 서로 너무 깊은 의지를 하고 있어서인가요?"},
+                                                              {type: "nav", value: "q6", label: "당신과 그들이 너무 다르기 때문인가요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q6": {
+                                                      wait: 800,
+                                                      type: "text",
+                                                      sentence: [
+                                                          {
+                                                              mex: '그럴 수도 있겠네요.\n' +
+                                                              '저도 언젠가는 그런 친구들이\n' +
+                                                              '생기면 좋겠네요.'
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "link", value: "http://210.89.190.28:44444/devcamp" , label:"떠나보아요~!"},
+                                                          ]
+                                                      }
+                                                  }
+                                              };
+
+                    // 열기구
+                                              var nodes12 = {
+                                                  "start": {
+                                                      wait: 200,
+                                                      sentence: [
+                                                          {
+                                                              mex: '반가워요.\n' +
+                                                              '요즘은 혼자 있어도 예전만큼 외롭지는 않아요.',
+                                                              wait: 500
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q2", label: "새로운 친구가 생겼나요?"},
+                                                              {type: "nav", value: "q2", label: "다른 물고기들을 만나는 건가요?"},
+                                                              {type: "nav", value: "q2", label: "저 말고 다른 사람이 생겼어요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q2": {
+                                                      wait: 600,
+                                                      sentence: [
+                                                          {
+                                                              mex: '아니에요 그런 게 아니라\n' +
+                                                              '새로운 놀이를 찾아내었거든요.',
+                                                              wait: 200
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q3", label: "그래요? 어떻게 하는 건데요?"},
+                                                              {type: "nav", value: "q3", label: "저랑도 같이해요 해보고 싶어요."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q3": {
+                                                      wait: 800,
+                                                      sentence: [
+                                                          {
+                                                              mex: '저기 있는 풍선에 올라타는 거예요.\n' +
+                                                              '가만히 있어도 위로 둥둥 올라가는 느낌이 아주 재미있어요.',
+                                                              wait: 200
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q4", label: "저도 해봐도 될까요?"},
+                                                              {type: "nav", value: "q4", label: "어떻게 올라타는지 알려주세요."},
+                                                              {type: "nav", value: "q4", label: "한번 보여줄 수 있어요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q4": {
+                                                      wait: 500,
+                                                      sentence: [
+                                                          {
+                                                              mex: '글쎄요.. 저는 아주 작아서 위로 뜨는 것 같은데.\n' +
+                                                              '당신이 올라타면 아래로 내려가지 않을까요?',
+                                                              wait: 0
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q5", label: "그렇겠네요.. 해보고 싶었는데.."},
+                                                              {type: "nav", value: "q5", label: "그래도 해보지 않고는 모르는 거잖아요."},
+                                                              {type: "nav", value: "q5", label: "저랑 같이 할 수 있는 놀이는 없을까요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q5": {
+                                                      wait: 500,
+                                                      sentence: [
+                                                          {
+                                                              mex: '아! 당신이 타도 떠오를 만한 풍선을 본 적이 있어요.\n' +
+                                                              '제가 타는 풍선보다 아주 큰 풍선이에요.',
+                                                              wait: 0
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q6", label: "다행이네요! 그럼 같이 탈 수 있겠어요."},
+                                                              {type: "nav", value: "q6", label: "혹시 그 풍선 가지고 있나요?"},
+                                                              {type: "nav", value: "q6", label: "얼마나 큰 풍선인가요? 지금 타볼래요!"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q6": {
+                                                      wait: 800,
+                                                      type: "text",
+                                                      sentence: [
+                                                          {
+                                                              mex: '지금은 탈 수 없어요..\n' +
+                                                              '항상 구름에 가깝게 떠 있기 때문이에요.\n' +
+                                                              '가끔은 내려오기도 하는데 그때 만나게 되면 같이 타기로 해요!'
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "link", value: "http://210.89.190.28:44444/devcamp" , label:"떠나보아요~!"},
+                                                          ]
+                                                      }
+                                                  }
+                                              };
+
+                    // 원숭이
+                                              var nodes13 = {
+                                                  "start": {
+                                                      wait: 200,
+                                                      sentence: [
+                                                          {
+                                                              mex: '반가워요.\n' +
+                                                              '혹시 저번에 서로 의지하는 풀들에 대한 이야기 기억하고 있나요?',
+                                                              wait: 500
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q2", label: "글쎄요 어떤 이야기였죠?"},
+                                                              {type: "nav", value: "q2", label: "그럼요 당연히 기억하고 있죠"},
+                                                              {type: "nav", value: "q2", label: "그런 풀들이 있었나요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q2": {
+                                                      wait: 600,
+                                                      sentence: [
+                                                          {
+                                                              mex: '저기 보이는 풀들이죠.\n' +
+                                                              '모습도 비슷하게 생긴 그들끼리만 항상 붙어있어서\n' +
+                                                              '저는 다가갈 수 없었는데 가까이 가는 친구가 있었어요.',
+                                                              wait: 200
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q3", label: "그래요? 그게 누구죠?"},
+                                                              {type: "nav", value: "q3", label: "왜 그 친구는 가까이 갈 수 있었나요?"},
+                                                              {type: "nav", value: "q3", label: "그 친구도 같은 풀이었나요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q3": {
+                                                      wait: 800,
+                                                      sentence: [
+                                                          {
+                                                              mex: '그 친구도 저 처럼 풀은 아니었는데..\n' +
+                                                              '왜 저는 그 친구 처럼 가까이가지 못했을까요?',
+                                                              wait: 200
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q4", label: "풀들이 당신을 싫어하던가요?"},
+                                                              {type: "nav", value: "q4", label: "그전에 잘못한게 있었던 것은 아닐까요?"},
+                                                              {type: "nav", value: "q4", label: "엄청나게 매력적인 친구였나요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q4": {
+                                                      wait: 500,
+                                                      sentence: [
+                                                          {
+                                                              mex: '그런건 아닌 것 같아요.\n' +
+                                                              '제가 다가가고 싶어할 때 처럼\n' +
+                                                              '풀들은 항상 묵묵히 있었어요.',
+                                                              wait: 0
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q5", label: "그 친구는 그래도 다가간 건가요?"},
+                                                              {type: "nav", value: "q5", label: "그런데 어떻게 친해질 수 있었을 까요?"},
+                                                              {type: "nav", value: "q5", label: "저는 잘 모르겠네요."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q5": {
+                                                      wait: 500,
+                                                      sentence: [
+                                                          {
+                                                              mex: '저는 풀들이 먼저 다가와 주길 기다렸는데..\n' +
+                                                              '제가 먼저 다가가지 않은 탓일까요?',
+                                                              wait: 0
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q6", label: "그럴 수도 있겠네요."},
+                                                              {type: "nav", value: "q6", label: "그렇다고 그게 당신의 탓은 아니에요."},
+                                                              {type: "nav", value: "q6", label: "묵묵한 풀들의 탓은 아닐까요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q6": {
+                                                      wait: 800,
+                                                      type: "text",
+                                                      sentence: [
+                                                          {
+                                                              mex: '저도 잘 모르겠네요..\n' +
+                                                              '제가 먼저 다가가서 풀들과 친해졌더라도\n' +
+                                                              '그래도 후회는 하지 않아요.\n' +
+                                                              '정말 좋은 친구는 되지 못했을 지도 모르잖아요.'
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "link", value: "http://210.89.190.28:44444/devcamp" , label:"떠나보아요~!"},
+                                                          ]
+                                                      }
+                                                  }
+                                              };
+
+                    // 조개
+                                              var nodes14 = {
+                                                  "start": {
+                                                      wait: 200,
+                                                      sentence: [
+                                                          {
+                                                              mex: '이제 더 이상 기억해내려고 노력하지 않아도 될 것 같아요!!',
+                                                              wait: 500
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q2", label: "다행이네요! 모든 기억이 돌아온 건가요?"},
+                                                              {type: "nav", value: "q2", label: "그래도 아직 많은 기억이 남아있을 수도 있어요."},
+                                                              {type: "nav", value: "q2", label: "왜요? 포기해 버린 건가요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q2": {
+                                                      wait: 600,
+                                                      sentence: [
+                                                          {
+                                                              mex: '그럴 수도 있겠죠.\n' +
+                                                              '그보다 당신에게 하고 싶은 말이 있어요.\n' +
+                                                              '사실 저 깨달은 것이 있어요.',
+                                                              wait: 200
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q3", label: "그래요 그게 뭐예요?"},
+                                                              {type: "nav", value: "q3", label: "기억하는 것보다 중요한 건가요?"},
+                                                              {type: "nav", value: "q3", label: "차라리 기억을 더 해보도록 해요."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q3": {
+                                                      wait: 800,
+                                                      sentence: [
+                                                          {
+                                                              mex: '음.. 그동안 기억하지 못한 것들만 생각했었던 것 같아요.\n' +
+                                                              '그러다 보니 다른 것들이 얼마나 소중한지 알지 못했어요.',
+                                                              wait: 200
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q4", label: "그래요. 기억해낸 것이 얼마나 많은데요."},
+                                                              {type: "nav", value: "q4", label: "그럴 수도 있겠네요. 더 기억하지 못해 아쉽지만요."},
+                                                              {type: "nav", value: "q4", label: "그래도 모든 기억을 찾는 것이 좋지 않을까요?"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q4": {
+                                                      wait: 500,
+                                                      sentence: [
+                                                          {
+                                                              mex: '앞으로는 기억 못 해낸 것만 생각하지 않으려고 해요.\n' +
+                                                              '소중한 기억은 앞으로도 많이 생길 테니까요!',
+                                                              wait: 0
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q5", label: "그렇군요. 잘 생각했어요."},
+                                                              {type: "nav", value: "q5", label: "어쩌다 그런 생각을 하게 되었죠?"},
+                                                              {type: "nav", value: "q5", label: "다시 생각해봐요! 기억을 찾아야죠!"}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q5": {
+                                                      wait: 500,
+                                                      sentence: [
+                                                          {
+                                                              mex: '지금 가진 것을 소중히 하고 싶어요.\n' +
+                                                              '당신도 소중한 것을 잘 가지고 있나요?',
+                                                              wait: 0
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 1900,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "nav", value: "q6", label: "네 저는 잘 보관하고 있어요."},
+                                                              {type: "nav", value: "q6", label: "글쎄요.. 소중한 것이 너무 많아요."},
+                                                              {type: "nav", value: "q6", label: "아니요 많이 놓쳐버린 것 같아요."}
+                                                          ]
+                                                      }
+                                                  },
+                                                  "q6": {
+                                                      wait: 800,
+                                                      type: "text",
+                                                      sentence: [
+                                                          {
+                                                              mex: '그렇군요..\n' +
+                                                              '저는 이제 앞으로 만들어질 소중한 기억을 간직하고 싶어요.\n' +
+                                                              '당신과 나누었던 대화들도 저기 있는 조개들처럼\n' +
+                                                              '소중히 간직할게요!'
+                                                          }
+                                                      ],
+                                                      r: {
+                                                          wait: 800,
+                                                          type: "button",
+                                                          el: [
+                                                              {type: "link", value: "http://210.89.190.28:44444/devcamp" , label:"떠나보아요~!"},
+                                                          ]
+                                                      }
+                                                  }
+                                              };
+
+
+
+
+                      // 사용자 현재 포인트로 레벨 생성 -> 어떤 질문 할 지 정해줌.
+                      if(user_point>=0 && user_point<1000){
+                        $freud.init('#freud', nodes1);
+                      }
+                      else if(user_point>=1000 && user_point<2000){
+                        $freud.init('#freud', nodes2);
+                      }
+                      else if(user_point>=2000 && user_point<3000){
+                        $freud.init('#freud', nodes3);
+                      }
+                      else if(user_point>=3000 && user_point<4000){
+                        $freud.init('#freud', nodes4);
+                      }
+                      else if(user_point>=4000 && user_point<5000){
+                        $freud.init('#freud', nodes5);
+                      }
+                      else if(user_point>=5000 && user_point<6000){
+                        $freud.init('#freud', nodes6);
+                      }
+                      else if(user_point>=6000 && user_point<7000){
+                        $freud.init('#freud', nodes7);
+                      }
+                      else if(user_point>=7000 && user_point<8000){
+                        $freud.init('#freud', nodes8);
+                      }
+                      else if(user_point>=8000 && user_point<9000){
+                        $freud.init('#freud', nodes9);
+                      }
+                      else if(user_point>=9000 && user_point<10000){
+                        $freud.init('#freud', nodes10);
+                      }
+                      else if(user_point>=10000 && user_point<11000){
+                        $freud.init('#freud', nodes11);
+                      }
+                      else if(user_point>=11000 && user_point<12000){
+                        $freud.init('#freud', nodes12);
+                      }
+                      else if(user_point>=12000 && user_point<13000){
+                        $freud.init('#freud', nodes13);
+                      }
+                      else if(user_point>=13000 && user_point<14000){
+                        $freud.init('#freud', nodes14);
+                      }
+                      else {
+                        $freud.init('#freud', nodes1);
+                      }
+
+
+                    // var nodes = {
+                    //     "start": {
+                    //         wait: 200,
+                    //         sentence: [
+                    //             {
+                    //                 mex: '반가워요 처음 보는 것 같은데 저를 아시나요?',
+                    //                 wait: 500
+                    //             },
+                    //             {
+                    //                 mex: "지금은 아무것도 기억나지 않아요.\n" +
+                    //                 "이야기하다 보면 기억이 나겠죠?",
+                    //                 wait: 500
+                    //             }
+                    //             /*{
+                    //                 mex: '<img src="http://localhost:44444/images/cosy_small.png">',
+                    //                 wait: 1000
+                    //             },*/
+                    //         ],
+                    //         r: {
+                    //             wait: 1800,
+                    //             type: "button",
+                    //             el: [
+                    //                 {type: "nav", value: "q2", label: "맞아요. 기억할 수 있겠죠?"},
+                    //                 {type: "nav", value: "q2", label: "그럴지도 모르죠 그런데 왜 기억을 잃었나요?"},
+                    //                 {type: "nav", value: "q2", label: "기억을 모두 잃다니 정말 바보같아요."}
+                    //                 //{type: "action", value: function(){$freud.do('about')}, label:"Who are you?"},
+                    //                 //{type: "link", value: "http://www.google.it", label:"Show me Google"}
+                    //             ]
+                    //         }
+                    //     },
+                    //     "q2": {
+                    //         wait: 600,
+                    //         sentence: [
+                    //             {
+                    //                 mex: '글쎄요.. 제가 금붕어이긴 한데.. 그래도 기억해낼 수 있다면 잊었다는 것은 중요하지 않아요',
+                    //                 wait: 200
+                    //             }
+                    //         ],
+                    //         r: {
+                    //             wait: 1900,
+                    //             type: "button",
+                    //             el: [
+                    //                 {type: "nav", value: "q3", label: "혹시 바다로 오기전에 살던 곳은 기억할 수 있어요?"},
+                    //                 {type: "nav", value: "q3", label: "그래도 조금이나마 기억나는 것은 없나요?"},
+                    //                 {type: "nav", value: "q3", label: "정말 모든 기억이 하나도 없는 건가요?"}
+                    //             ]
+                    //         }
+                    //     },
+                    //     "q3": {
+                    //         wait: 800,
+                    //         sentence: [
+                    //             {
+                    //                 mex: '음... 지금 기억나는 것은...\n' +
+                    //                 '가끔은 평평하기도 하고 가끔은 우뚝 솟아 있기도 했던 곳에 살았던 것 같아요.',
+                    //                 wait: 200
+                    //             }
+                    //         ],
+                    //         r: {
+                    //             wait: 1900,
+                    //             type: "button",
+                    //             el: [
+                    //                 {type: "nav", value: "q4", label: "혹시 나무가 많은 산에 살았던 건가요?"},
+                    //                 {type: "nav", value: "q4", label: "혹시 산호초가 많은 저쪽 언덕에 있었던 것 아니에요?"},
+                    //                 {type: "nav", value: "q4", label: "혹시 넓고 평평한 들판에 있었나요?"}
+                    //             ]
+                    //         }
+                    //     },
+                    //     "q4": {
+                    //         wait: 500,
+                    //         sentence: [
+                    //             {
+                    //                 mex: '음.. 그게 뭐죠?\n' +
+                    //                 '어떤 곳인지는 잘모르겠지만 거긴 아니었던 것 같아요.️',
+                    //                 wait: 0
+                    //             }
+                    //         ],
+                    //         r: {
+                    //             wait: 1900,
+                    //             type: "button",
+                    //             el: [
+                    //                 {type: "nav", value: "q5", label: "그런가요.. 혹시 그럼 어디일까요?"},
+                    //                 {type: "nav", value: "q5", label: "맞아요 금붕어가 살기엔 힘들 수도 있죠..."},
+                    //                 {type: "nav", value: "q5", label: "또 다른 것은 기억나지 않나요?"}
+                    //             ]
+                    //         }
+                    //     },
+                    //     "q5": {
+                    //         wait: 800,
+                    //         type: "text",
+                    //         sentence: [
+                    //             {
+                    //                 mex: '글쎄요.. 그것보다 당신의 이야기도 듣고싶어요\n' +
+                    //                 '그러다 보면 기억나지 않을까요?\n' +
+                    //                 '나중에 어떤 곳에서 살고 싶으세요?'
+                    //             }
+                    //         ],
+                    //         r: {
+                    //             wait: 800,
+                    //             type: "button",
+                    //             el: [
+                    //                 {type: "nav", value: "q6", label: "저는 큰 창문으로 해변이 보이는 집에서 살고싶어요."},
+                    //                 {type: "nav", value: "q6", label: "저는 마치 궁전이나 성처럼 크고 웅장한 곳에서 살거에요."},
+                    //                 {type: "nav", value: "q6", label: "숲 속에서 살고 싶어요 흙과 모래 냄새가 나는 곳이요."}
+                    //             ]
+                    //         }
+                    //     },
+                    //     "q6": {
+                    //         wait: 800,
+                    //         type: "text",
+                    //         sentence: [
+                    //             {
+                    //                 mex: '음! 잠깐만...\n' +
+                    //                 '맞아요 저 해변에 있었어요 모래가 평평하게 가득하고\n' +
+                    //                 '가끔씩 누군가 멋지게 만들어놓은 모래성이 있었어요.'
+                    //             }
+                    //         ],
+                    //         r: {
+                    //             wait: 800,
+                    //             type: "button",
+                    //             el: [
+                    //                 {type: "link", value: "http://localhost:44444/devcamp" , label:"떠나보아요~!"},
+                    //             ]
+                    //         }
+                    //     }
+                    // };
+
+                  }       // else
+              });
+
+              // 3. ME 선택 시
+              $("#chat2").click(function(e){
+                  location.href = "http://210.89.190.28:44444/ChatPage2";
+              });
+            }
+    </script>
+</div>
+    <a href="http://210.89.190.28:44444/">채팅종료</a>
+    <input type="hidden" value="<%=user.point%>" id="user_point" name="user_point" />
+    <input type="hidden" value="<%=code%>" id="code" name="code" />
+
+    <!-- **** 대화 유형 선택 부분 **** -->
+    <div style="display:none;" id="chatSelect" class="chat">
+        <div class="chat_Column">
+          <div class="chat__buttons">
+            <button id="chat1" class="select__chat1">COSY</button>
+            <button id="chat2" class="select__chat2">ME</button>
+          </div>
+        </div>
+    </div>
+
+    <!-- **** 1) 코지 스무고개 대화 부분 **** -->
+    <div style="display:none;" id="aboutCosy" class="chat">
+        <div class="chat_Column">
+            <div style="text-align:center; margin:10px auto;">
+                <!-- <img style="max-width: 100%;" src="https://www.riccardotartaglia.it/freudjs/img/header.png"> -->
+            </div>
+            <div id="freud" style="overflow:auto;">
+                <div id="bot-icon" class="freud-icon __bot">
+                    <img src="http://210.89.190.28:44444/images/코지.png">
+                </div>
+                <div id="user-icon" class="freud-icon __user">
+                    <img src="https://www.riccardotartaglia.it/freudjs/img/user.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- **** 2) 감정분석 대화 구현한 부분 **** -->
+    <!-- 주석처리 한 부분에 대화 부분 넣으시면 됩니다 ( 형식 맞춰서 id, class는 적용해 주셔야 합니당 )-->
+    <div style="display:none;" id="aboutMe" class="chat">
+        <div class="chat_Column">
+            <div style="text-align:center; margin:10px auto;"></div>
+                <!-- <img style="max-width: 100%;" src="https://www.riccardotartaglia.it/freudjs/img/header.png"> -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
