@@ -33,10 +33,10 @@ module.exports = function(router, passport) {
     // });
 
     // 회원가입 화면
-    router.route('/signup').get(function(req, res) {
-        console.log('/signup 패스 요청됨.');
-        res.render('RegPageUI.ejs');
-    });
+    // router.route('/signup').get(function(req, res) {
+    //     console.log('/signup 패스 요청됨.');
+    //     res.render('RegPageUI.ejs');
+    // });
 
     // // 회원가입 요청
     // router.route('/signup').post(passport.authenticate('local', {
