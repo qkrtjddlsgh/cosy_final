@@ -7,10 +7,74 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel='stylesheet' href='stylesheets/main.css' />
 </head>
+<style>
+    .login {
+    margin-left: 4%;
+    width: 56px;
+    height: 20px;
+    opacity: 0.5;
+    font-family: KoPubDotum;
+    font-size: 15px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    background-color: Transparent;
+    border: 0;
+    color: rgba(255, 255, 255, 0.5);
+
+    animation-name: login_reg;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+</style>
+<script>
+    $(document).ready(function(){
+        // 로그인
+        $("#btnLogin").click(function(e){
+            var id_email = $("#id_email").val(); // 공백처리 후 값 세팅
+            var password = $("#password").val(); // 공백처리 후 값 세팅
+        
+            if (id_email.length == ""){
+                alert("ID를 입력해주세요.");
+                $("#id_email").focus();
+                return false;
+            }
+            if (password == "") {
+                alert("비밀번호를 입력해주세요.");
+                $("#password").focus();
+                return false;
+            }
+            // 로그인 처리
+            $.ajax({
+                url: '/CheckLogin',
+                type: 'POST',
+                dataType: 'text',
+                data: {id_email: id_email, password: password},
+                success: function(data) {
+                    var json = JSON.parse(data);
+                    if (json.code == 1) { // 성공시
+                        console.log("ㅇㅇ");
+                        location.href = "/ActivePageUI";
+                    } else { // 실패시
+                        alert("로그인정보가 일치하지 않습니다.\n다시 시도해주세요.");
+                        location.href = "/Login";
+                        //$("#id_email").val('').focus();
+                        //$("#password").val('');
+                    }
+                }
+            });
+        });
+    });
+</script>
 <body>
 <img src="images/logo.png" class="layer">
 
-<form action="/login" method="post">
+<!-- <form action="/login" method="post"> -->
     <div class="TT1">
         <!-- <img src="images/id-icon.png" class="ID_ICON"> -->
         <input class="ID" type="text" name="id_email" id="id_email" placeholder="아이디"/>
@@ -24,9 +88,9 @@
     <div>
         <input type="text" class="reg" onclick="location.href='http://210.89.190.28:44444/RegPageUI'" value="회원가입"/>
         <!-- <a href="/auth/google" class="btn btn-primary"><span class="fa google-sign-in"></span>구글로그인</a> -->
-        <a href="/auth/google" class="glogin">구글 로그인</a>
+        <!-- <a href="/auth/google" class="glogin">구글 로그인</a> -->
         <input type="submit" class="login" id="btnLogin" value="로그인"/>
     </div>
-</form>
+<!-- </form> -->
 </body>
 </html>

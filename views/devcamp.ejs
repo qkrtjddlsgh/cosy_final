@@ -16,7 +16,7 @@
     });
 
     $('#story__icon').click(function(e){
-        window.location.href = "http://210.89.190.28:44444/FirstStory"
+        window.location.href = "http://127.0.0.1:44444/FirstStory"
     });
 
     </script>
@@ -97,14 +97,14 @@
             user_level = 0;
           }
 
-          var url_list = "url('http://210.89.190.28:44444/backg/" + "level" + user_level + ".png";
+          var url_list = "url('http://127.0.0.1:44444/backg/" + "level" + user_level + ".png";
           document.getElementById('td1').style.backgroundImage = url_list;
           swal( level_name + " 기억났어요! 고마워요!");
         }
 
 
         function Tochat(){
-            location.href = "http://210.89.190.28:44444/ChatPage";
+            location.href = "http://127.0.0.1:44444/ChatPage";
         }
 
         function reset(){
@@ -123,7 +123,7 @@
 
               case "yes":
                 swal("포인트가 리셋되었습니다", "새롭게 시작해 볼까요?", { buttons: false, timer: 3000});
-                setTimeout(function() {window.location.href = "http://210.89.190.28:44444/reset"}, 3000);
+                setTimeout(function() {window.location.href = "http://127.0.0.1:44444/reset"}, 3000);
               break;
 
               default:
@@ -149,7 +149,7 @@
 
                 case "yes":
                   swal("로그아웃 되었습니다", "내일 또 오세요!", { buttons: false, timer: 3000});
-                  setTimeout(function() {window.location.href = "http://210.89.190.28:44444/logout"}, 3000);
+                  setTimeout(function() {window.location.href = "http://127.0.0.1:44444/logout"}, 3000);
                 break;
 
                 default:
@@ -157,7 +157,7 @@
             });
         }
         function Ending(){
-            location.href = "http://210.89.190.28:44444/Ending";
+            location.href = "http://127.0.0.1:44444/Ending";
         }
 
     </script>
@@ -168,8 +168,8 @@
   <input type="hidden" value="<%=user.point%>" id="user_point" name="user_point" />
 
   <!-- 왼쪽, 오른쪽 상단 icon -->
-  <img src="http://210.89.190.28:44444/images/story-icon.png" class="story__icon" id="story__icon"></img>
-  <img src="http://210.89.190.28:44444/images/user-icon.png" class="profile__icon" id="profile__icon"></img>
+  <img src="http://127.0.0.1:44444/images/story-icon.png" class="story__icon" id="story__icon"></img>
+  <img src="http://127.0.0.1:44444/images/user-icon.png" class="profile__icon" id="profile__icon"></img>
 
   <!-- 사용자 프로필 -->
   <div class="profile" id="profile">
@@ -183,8 +183,8 @@
         <div class="profile__date">2018.05.09</div>
         <div class="profile__email"><%= user.point %></div>
         <div class="profile__button">
-          <img src="http://210.89.190.28:44444/images/reset.png" class="reset__button" onclick="reset();"></img>
-          <img src="http://210.89.190.28:44444/images/logout.png" class="logout__button" onclick="logout();"></img>
+          <img src="http://127.0.0.1:44444/images/reset.png" class="reset__button" onclick="reset();"></img>
+          <img src="http://127.0.0.1:44444/images/logout.png" class="logout__button" onclick="logout();"></img>
         </div>
 
 
@@ -289,7 +289,7 @@
                 "click" : function (e) {
                     // e.displayObject
                     // cosy.move(450,180,400,function(e){
-                    location.href = "http://210.89.190.28:44444/ChatPage";
+                    location.href = "http://127.0.0.1:44444/ChatPage";
                     // });
                     // cosy.move(450,180,400,{
                     // });

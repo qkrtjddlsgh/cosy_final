@@ -63,29 +63,29 @@ configPassport(app, passport);
 var userPassport = require('./routes/user_passport');
 userPassport(router, passport);
 
-database.init(app, config);
+// database.init(app, config);
 
 var index = require('./routes/index');
 var sentiment = require('./routes/CheckMember/sentiment');
 // var users = require('./routes/users');
-// var CheckLogin = require('./routes/CheckMember/CheckLogin');
-// var CheckReg = require('./routes/CheckMember/CheckReg');
+var CheckLogin = require('./routes/CheckMember/CheckLogin');
+var CheckReg = require('./routes/CheckMember/CheckReg');
 
-// var mongoose = require('mongoose');
-// var db = mongoose.connection;
-// db.on('error', console.error);
-// db.once('open', function(){
-//   // Connected to mongodb server
-//     console.log("Connected to mongodb server")
-// });
-//
-// mongoose.connect('mongodb://localhost/cosy_db');
+var mongoose = require('mongoose');
+var db = mongoose.connection;
+db.on('error', console.error);
+db.once('open', function(){
+  // Connected to mongodb server
+    console.log("Connected to mongodb server")
+});
+
+mongoose.connect('mongodb://localhost/cosy_db');
 
 app.use('/', index);
 app.use('/sentiment', sentiment);
 // app.use('/users', users);
-// app.use('/CheckLogin', CheckLogin);
-// app.use('/CheckReg', CheckReg);
+app.use('/CheckLogin', CheckLogin);
+app.use('/CheckReg', CheckReg);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

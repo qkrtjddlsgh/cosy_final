@@ -7,7 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style>
         html {
-            background: url("http://210.89.190.28:44444/images/2.jpeg");
+            background: url("http://127.0.0.1:44444/images/2.jpeg");
             background-repeat: no-repeat;
             -webkit-background-size: cover;
             width: 100%;
@@ -85,10 +85,10 @@
         }
     </style>
     <script>
-         /*$(document).ready(function() {
+         $(document).ready(function() {
              // 회원가입
              $('#btnReg').click(function (e) {
-                 var id_email = $('#id').val();
+                 var id_email = $('#id_email').val();
                  var password = $('#password').val();
                  var name = $('#name').val();
                  var birthday = $('#birthday').val();
@@ -126,7 +126,7 @@
                          var json = JSON.parse(data);
                          if (json.code == 1) { // 성공시
                              alert('회원가입이 완료되었습니다!\n 로그인을 진행해주세요.');
-                             location.href = "/LoginPageUI";
+                             location.href = "/Login";
                          }
                          else { // 실패시
                              alert("이미 존재하는 아이디입니다.\n다시 시도해주세요.");
@@ -136,18 +136,18 @@
                  });
 
              });
-         });*/
+         });
     </script>
 </head>
 <body>
 <img src="images/logo.png" class="layer">
 
-<form action="/signup" method="post">
+<!-- <form action="/signup" method="post"> -->
     <input class="NAME" type="text" id="name" name="name" placeholder="이름을 입력해주세요."/>
     <input class="ID" type="text" id="id_email" name="id_email" placeholder="아이디를 입력해주세요."/>
     <input class="PASSWORD" type="password" id="password" name="password" placeholder="비밀번호를 입력해주세요."/>
     <input class="BIRTHDAY" type="text" id="birthday" name="birthday" placeholder="생년월일을 입력해주세요."/>
     <input type="submit" class="reg" id="btnReg" value="회원가입"/>
-</form>
+<!-- </form> -->
 </body>
 </html>

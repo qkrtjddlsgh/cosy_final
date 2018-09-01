@@ -1,236 +1,90 @@
 <!DOCTYPE html>
 <html lang="ko" id="td1">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>Cosy 화면</title>
-    <link rel='stylesheet' href='stylesheets/chatbot.css'/>
-    <link rel='stylesheet' href='stylesheets/activePage.css'/>
+    <link rel='stylesheet' href='stylesheets/chatbot.css' />
+    <link rel='stylesheet' href='stylesheets/activePage.css' />
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
     <script>
-    $(document).ready(function(){
-      $('#profile__icon').click(function(e){
-          $('#profile').fadeToggle();
-      });
-
-      $('#story__icon').click(function(e){
-          window.location.href = "http://210.89.190.28:44444//FirstStory"
-      });
-
-    });
-    </script>
-    <script>
-        window.onload = function(){
-          chback();
-        };
-
-        function chback(){
-
-          var user_point = document.getElementById("user_point").value;
-          var user_level, level_name;
-
-          if(user_point>=0 && user_point<1000){
-            user_level = 0;
-          }
-          else if(user_point>=1000 && user_point<2000){
-            user_level = 1;
-            level_name = "모래성이";
-          }
-          else if(user_point>=2000 && user_point<3000){
-            user_level = 2;
-            level_name = "바이킹이";
-          }
-          else if(user_point>=3000 && user_point<4000){
-            user_level = 3;
-            level_name = "풍선차가";
-          }
-          else if(user_point>=4000 && user_point<5000){
-            user_level = 4;
-            level_name = "폭포가";
-          }
-          else if(user_point>=5000 && user_point<6000){
-            user_level = 5;
-            level_name = "달이";
-          }
-          else if(user_point>=6000 && user_point<7000){
-            user_level = 6;
-            level_name = "관람차가";
-          }
-          else if(user_point>=7000 && user_point<8000){
-            user_level = 7;
-            level_name = "별똥별이";
-          }
-          else if(user_point>=8000 && user_point<9000){
-            user_level = 8;
-            level_name = "롤러코스터가";
-          }
-          else if(user_point>=9000 && user_point<10000){
-            user_level = 9;
-            level_name = "게가";
-          }
-          else if(user_point>=10000 && user_point<11000){
-            user_level = 10;
-            level_name = "무지개가";
-          }
-          else if(user_point>=11000 && user_point<12000){
-            user_level = 11;
-            level_name = "열대우림이";
-          }
-          else if(user_point>=12000 && user_point<13000){
-            user_level = 12;
-            level_name = "열기구가";
-          }
-          else if(user_point>=13000 && user_point<14000){
-            user_level = 13;
-            level_name = "원숭이가";
-          }
-          else if(user_point>=14000 && user_point<15000){
-            user_level = 14;
-            level_name = "조개가";
-          }
-          else if(user_point>=15000 && user_point<16000){
-            user_level = 15;
-          }
-          else{
-            user_level = 0;
-          }
-
-          var url_list = "url('http://210.89.190.28:44444/backg/" + "level" + user_level + ".png";
-          document.getElementById('td1').style.backgroundImage = url_list;
-          swal( level_name + " 기억났어요! 고마워요!");
-        }
-
-        function reset(){
-
-          swal("정말로 포인트를 리셋하시겠습니까?", {
-            buttons: {
-              cancel: "아니오",
-              catch: {
-                text: "예",
-                value: "yes",
-              }
-            },
-          })
-          .then((value) => {
-            switch (value) {
-
-              case "yes":
-                swal("포인트가 리셋되었습니다", "새롭게 시작해 볼까요?", { buttons: false, timer: 3000});
-                setTimeout(function() {window.location.href = "http://210.89.190.28:44444/reset"}, 3000);
-              break;
-
-              default:
-            }
-          });
-
-
-        }
-
-        function logout(){
-
-            swal("로그아웃 하시겠습니까?", {
-              buttons: {
-                cancel: "아니오",
-                catch: {
-                  text: "예",
-                  value: "yes",
-                }
-              },
-            })
-            .then((value) => {
-              switch (value) {
-
-                case "yes":
-                  swal("로그아웃 되었습니다", "내일 또 오세요!", { buttons: false, timer: 3000});
-                  setTimeout(function() {window.location.href = "http://210.89.190.28:44444/logout"}, 3000);
-                break;
-
-                default:
-              }
-            });
-        }
-        function Ending(){
-            location.href = "http://210.89.190.28:44444/Ending";
-        }
-
-
-
+    //     $('#story__icon').click(function(e){
+    //       console.log(1);
+    //       location.href = "http://210.89.190.28:44444//FirstStory";
+    //   });
+    function gogogo(){
+        location.href = "http://210.89.190.28:44444/FirstStory";
+    }
+    function gogogogo(){
+        location.href = "http://210.89.190.28:44444/Login";
+    }
     </script>
     <style type="text/css">
         * {
-            margin : 0;
-            padding : 0;
-            line-height : 1;
+            margin: 0;
+            padding: 0;
+            line-height: 1;
         }
-        html, body{
-            width : 100%;
-            height : 100%;
-            /*background: url("http://localhost:44444/backg/level0.png");*/
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            background: url("http://localhost:44444/backg/level14.png");
             background-repeat: no-repeat;
             -webkit-background-size: cover;
         }
+
         #container {
-            position : absolute;
+            position: absolute;
         }
     </style>
 </head>
+
 <body>
 
-  <% if(user) { %>
-  <input type="hidden" value="<%=user.point%>" id="user_point" name="user_point" />
-  <% } %>
-<!-- 왼쪽, 오른쪽 상단 icon -->
-<img src="http://210.89.190.28:44444/images/story-icon.png" class="story__icon" id="story__icon"></img>
-<img src="http://210.89.190.28:44444/images/user-icon.png" class="profile__icon" id="profile__icon"></img>
+    <!-- 왼쪽, 오른쪽 상단 icon -->
+    <img src="http://210.89.190.28:44444/images/story-icon.png" onclick="gogogo()" class="story__icon" id="story__icon"></img>
+    <img src="http://210.89.190.28:44444/images/user-icon.png" onclick="gogogogo()" class="profile__icon" id="profile__icon"></img>
 
-<!-- 사용자 프로필 -->
-<div class="profile" id="profile">
+    <!-- 사용자 프로필 -->
+    <div class="profile" id="profile">
 
-    <!-- 사용자 레벨 값 자바스크립트로 넘겨줌 (배경화면 때문에) -->
+        <!-- 사용자 레벨 값 자바스크립트로 넘겨줌 (배경화면 때문에) -->
 
-    <% if (user.provider == undefined || user.provider == '') { %>
-    <div class="profile__local">
-      <div class="profile__name"><%= user.name %></div>
-      <div class="profile__email"><%= user.id_email %></div>
-      <!-- <div class="profile__date">2018.05.09</div> -->
-      <div class="profile__email"><%= user.point %></div>
-      <div class="profile__button">
-        <img src="http://210.89.190.28:44444/images/reset.png" class="reset__button" onclick="reset();"></img>
-        <img src="http://210.89.190.28:44444/images/logout.png" class="logout__button" onclick="logout();"></img>
-      </div>
+        <div class="profile__local">
+            <div class="profile__button">
+                <img src="http://210.89.190.28:44444/images/reset.png" class="reset__button" onclick="reset();"></img>
+                <img src="http://210.89.190.28:44444/images/logout.png" class="logout__button" onclick="logout();"></img>
+            </div>
 
 
-    <!-- <input type="text" onclick="Ending();" value="Cosy-Ending-Story "/> -->
+            <!-- <input type="text" onclick="Ending();" value="Cosy-Ending-Story "/> -->
+        </div>
     </div>
-    <% } else if (user.provider == 'google') { %>
-    <div class="profile__google">
-      <div class="profile__id"><%= user.google.id %></div>
-      <div class="profile__email"><%= user.google.id_email %></div>
-      <div class="profile__name"><%= user.google.name %></div>
 
-    </div>
-    <% } %>
-</div>
-
-<div id="container" class="container"></div>
+    <div id="container" class="container"></div>
     <script type="text/javascript" src="/javascripts/collie.min.js"></script>
     <script type="text/javascript" src="/javascripts/collie.tool.min.js"></script>
     <script type="text/javascript" src="/javascripts/box2d-web-2.1.a.3.js"></script>
     <script type="text/javascript" src="/javascripts/collie.Box2d.js"></script>
     <script type="text/javascript">
-        collie.util.addEventListener(window, "load", function(){
+        collie.util.addEventListener(window, "load", function () {
             /*var oConsole = new collie.FPSConsole({
                 isSimple : true,
                 color : "#fff"
             });*/
             var htParams = collie.util.queryString();
             var htSize = {
-                width : document.body.clientWidth,
-                height : document.body.clientHeight
+                width: document.body.clientWidth,
+                height: document.body.clientHeight
             };
-            collie.Renderer.DEBUG_RENDERING_MODE = typeof htParams.dom != "undefined" ? "dom" : (typeof htParams.canvas != "undefined" ? "canvas" : "auto");
+            collie.Renderer.DEBUG_RENDERING_MODE = typeof htParams.dom != "undefined" ? "dom" : (typeof htParams
+                .canvas != "undefined" ? "canvas" : "auto");
             collie.Renderer.RETINA_DISPLAY = false;
             collie.ImageManager.add("cosy", "/images/cosy_small.png");
             collie.ImageManager.addSprite("cosy", {
@@ -240,19 +94,19 @@
                 faceright: [0, 80, 100, 85, 1]
             });
             var layer = new collie.Layer({
-                width : htSize.width,
-                height : htSize.height
+                width: htSize.width,
+                height: htSize.height
             });
             var box2d = new collie.Box2d(htSize.width, htSize.height, 30);
             box2d.addFixture("cosy", {
-                density : 1.0,
-                friction : 0.5,
-                restitution : 0
+                density: 1.0,
+                friction: 0.5,
+                restitution: 0
             });
             box2d.addFixture("none", {
-                density : 1.0,
-                friction : 0,
-                restitution : 0
+                density: 1.0,
+                friction: 0,
+                restitution: 0
             });
             /*box2d.addFixture("bullet", {
                 density : 0,
@@ -277,28 +131,28 @@
                 backgroundColor: "green"
             }).addTo(layer);*/
             var cosy = new collie.DisplayObject({
-                width : 100,
-                height : 85,
-                x : "center",
-                y : "center",
-                useEvent : true,
-                backgroundImage : "cosy",
-                spriteSheet : "faceright"
+                width: 100,
+                height: 85,
+                x: "center",
+                y: "center",
+                useEvent: true,
+                backgroundImage: "cosy",
+                spriteSheet: "faceright"
             }).addTo(layer);
             var rTimer = collie.Timer.cycle(cosy, "450fps", {
                 to: 1
             });
 
             cosy.attach({
-                "click" : function (e) {
+                "click": function (e) {
                     window.location.href = "http://210.89.190.28:44444/ChatPage";
                 }
             });
 
             rTimer.stop();
             var body = box2d.createObject(cosy, {
-                width : 100,
-                height : 85
+                width: 100,
+                height: 85
             }, "cosy");
             /*var box1 = box2d.createObject(box, {
                 width : 100,
@@ -308,8 +162,8 @@
             var player = body;
             player.SetFixedRotation(true);
             var htKeyPressed = {
-                left : false,
-                right : false
+                left: false,
+                right: false
             };
             /*collie.util.addEventListener(document.body, "click", function (e) {
                 location.href = "http://localhost:44444/ChatPage";
@@ -327,58 +181,58 @@
             collie.util.addEventListener(document.body, "keydown", function (e) {
                 player.SetAwake(true);
                 switch (e.keyCode) {
-                    case 39 : //right
+                    case 39: //right
                         htKeyPressed.right = true;
                         cosy.set("spriteSheet", "faceright");
                         rTimer.start();
                         break;
-                    case 37 : //left
+                    case 37: //left
                         htKeyPressed.left = true;
                         cosy.set("spriteSheet", "faceleft");
                         rTimer.start();
                         break;
-                    case 38 : //top
+                    case 38: //top
                         var velocity = player.GetLinearVelocity();
                         player.SetLinearVelocity(collie.Box2d.vec2(velocity.x, -20), player.GetWorldCenter());
                         break;
-                    case 40 : //bottom
+                    case 40: //bottom
                         var velocity = player.GetLinearVelocity();
                         player.SetLinearVelocity(collie.Box2d.vec2(velocity.x, +15), player.GetWorldCenter());
                         break;
-                    /*case 40:
-                           direc = cosy.get("spriteSheet");
-                           var d = -1;
-                           if(direc == 'faceright') d = 1;
-                           var rx = rabbit.get ( "x" );
-                           var ry = rabbit.get ( "y" );
-                           var rw = rabbit.get("width");
-                           var rh = rabbit.get("height");
-                           var fire = new collie.DisplayObject({
-                               x: rx+d*(rw/2),
-                               y: ry+(rh/2),
-                               width: 10,
-                               height: 4,
-                               mass: 1,
-                               backgroundColor: "red"
-                           }).addTo(layer);
-                           var fire1 = box2d.createObject(fire, {
-                               width : 10,
-                               height : 4,
-                               type: "dynamic"
-                           }, "bullet");
-                           fire1.SetLinearVelocity(collie.Box2d.vec2(d*20, 0), fire1.GetWorldCenter());
-                       break;*/
+                        /*case 40:
+                               direc = cosy.get("spriteSheet");
+                               var d = -1;
+                               if(direc == 'faceright') d = 1;
+                               var rx = rabbit.get ( "x" );
+                               var ry = rabbit.get ( "y" );
+                               var rw = rabbit.get("width");
+                               var rh = rabbit.get("height");
+                               var fire = new collie.DisplayObject({
+                                   x: rx+d*(rw/2),
+                                   y: ry+(rh/2),
+                                   width: 10,
+                                   height: 4,
+                                   mass: 1,
+                                   backgroundColor: "red"
+                               }).addTo(layer);
+                               var fire1 = box2d.createObject(fire, {
+                                   width : 10,
+                                   height : 4,
+                                   type: "dynamic"
+                               }, "bullet");
+                               fire1.SetLinearVelocity(collie.Box2d.vec2(d*20, 0), fire1.GetWorldCenter());
+                           break;*/
                 }
             });
             collie.util.addEventListener(document.body, "keyup", function (e) {
                 var velocity = player.GetLinearVelocity();
                 rTimer.stop();
                 switch (e.keyCode) {
-                    case 39 : //right
+                    case 39: //right
                         htKeyPressed.right = false;
                         player.SetLinearVelocity(collie.Box2d.vec2(0, velocity.y));
                         break;
-                    case 37 : //left
+                    case 37: //left
                         htKeyPressed.left = false;
                         player.SetLinearVelocity(collie.Box2d.vec2(0, velocity.y));
                         break;
@@ -399,6 +253,7 @@
             box2d.load(false);
         });
     </script>
-</div>
+    </div>
 </body>
+
 </html>
